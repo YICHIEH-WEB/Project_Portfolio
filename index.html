@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Yi-Chieh LEE: account management, data analysis and marketing analytics portfolio.">
+<style>:root{color-scheme:dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Yi-Chieh LEE Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark product-portfolio after the user's reference. Sticky nav, hero, case studies with real dashboard screenshots, filter pills over a project grid, contact CTA.
+   Palette: UI UX Pro Max dark slate + the reference's indigo/violet. Type: UI UX Pro Max "dashboard/analytics" pairing. Polish rules: Impeccable craft floor. Single dark theme by choice. */
+:root {
+  --bg: #0b1020;
+  --surface: #111827;
+  --surface-2: #172036;
+  --line: #2a3550;
+  --ink: #f8fafc;
+  --ink-2: #b6c2d6;
+  --a: #7b83ff;
+  --b: #a970ff;
+  --a-ink: #c9ccff;
+  --ok: #3ccf8e;
+  --sans: "Fira Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Fira Code", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-color: #2f3b58 var(--bg); }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; caret-color: var(--a); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+::selection { background: rgba(123,131,255,0.38); color: #fff; }
+::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: #2f3b58; border-radius: 10px; border: 2px solid var(--bg); }
+a { color: inherit; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--a); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.ico { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 720px) { .wrap { padding-left: max(28px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); } }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11,16,32,0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 17px; }
+.logo span:first-child { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--a), var(--b)); font-weight: 800; font-size: 14px; color: #fff; }
+.links { display: none; gap: 28px; font-size: 15px; color: var(--ink-2); }
+.links a { text-decoration: none; transition: color .2s; }
+.links a:hover { color: var(--ink); }
+@media (min-width: 820px) { .links { display: flex; } }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--sans); padding: 10px 18px; border-radius: 10px; border: 0; cursor: pointer; text-decoration: none; color: #fff; background: linear-gradient(100deg, var(--a), var(--b)); box-shadow: 0 8px 22px -10px rgba(123,131,255,0.75); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -10px rgba(123,131,255,0.9); }
+.btn.ghost { background: var(--surface-2); border: 1px solid var(--line); box-shadow: none; color: var(--ink); }
+
+/* Hero */
+.hero { position: relative; padding-block: 80px 64px; text-align: center; overflow: hidden; }
+.hero::before { content: ""; position: absolute; left: 50%; top: -260px; width: 900px; height: 620px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(123,131,255,0.20), transparent 72%); pointer-events: none; }
+.hero .wrap { position: relative; }
+.status { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1.45; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 16px; max-width: 100%; text-align: left; }
+.status i { flex: none; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.hero h1 { font-size: clamp(44px, 8vw, 88px); font-weight: 800; line-height: 1.02; margin-top: 22px; letter-spacing: -0.035em; }
+.hero h1 .hl { background: linear-gradient(100deg, var(--a), var(--b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { color: var(--ink-2); font-size: clamp(16.5px, 1.6vw, 19px); max-width: 64ch; margin: 20px auto 0; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
+.langs { margin: 18px auto 0; font-size: 14px; color: var(--ink-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .status, .hero h1, .hero p, .hero .cta, .hero .langs { animation: lift .8s cubic-bezier(.16,1,.3,1) both; }
+  .hero h1 { animation-delay: .06s; } .hero p { animation-delay: .12s; } .hero .cta { animation-delay: .18s; } .hero .langs { animation-delay: .24s; }
+  @keyframes lift { from { transform: translateY(10px); } to { transform: none; } }
+}
+
+.sec { padding-block: 64px; }
+.sec-head { text-align: center; margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(32px, 4.4vw, 48px); font-weight: 800; }
+.sec-head p { color: var(--ink-2); margin: 12px auto 0; max-width: 56ch; }
+
+/* Case studies */
+.featured { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 920px) { .featured { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 14px; min-width: 0; transition: border-color .2s, transform .25s cubic-bezier(.2,.8,.2,1); }
+.fcard:hover { border-color: #3d4a6b; transform: translateY(-3px); }
+.thumb { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--surface-2); max-width: 100%; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.fcard:hover .thumb img { transform: scale(1.03); }
+.thumb.gen { aspect-ratio: 2 / 1; }
+.thumb.gen svg { width: 100%; height: 100%; display: block; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.fcard:hover .thumb.gen svg { transform: scale(1.02); }
+.thumb.gen .badge { right: auto; left: 12px; }
+.badge { position: absolute; top: 10px; right: 10px; font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; color: #fff; background: linear-gradient(100deg, var(--a), var(--b)); box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5); }
+.fbody { padding: 4px 6px 6px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+.fcard h3 { font-size: 22px; font-weight: 700; line-height: 1.25; }
+.meta { font-size: 13.5px; color: var(--a-ink); margin-top: -4px; }
+.fcard p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: var(--surface-2); border-radius: 10px; padding: 10px; min-width: 0; }
+.kpis b { display: block; font-size: 19px; font-weight: 600; color: var(--ink); }
+.kpis span { display: block; font-size: 12.5px; color: var(--ink-2); line-height: 1.3; margin-top: 2px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.tags li { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink); }
+details { border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto; }
+summary { cursor: pointer; list-style: none; font-weight: 600; font-size: 15px; color: var(--a-ink); display: flex; justify-content: space-between; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary .ico { transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+details[open] summary .ico { transform: rotate(45deg); }
+details .more { padding-top: 10px; }
+details .more p { margin: 0 0 10px; color: var(--ink-2); font-size: 14.5px; }
+details .more img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); margin-top: 4px; display: block; }
+details .more img + img { margin-top: 10px; }
+.card details { margin: 0 4px; }
+
+/* Filters + grid */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
+.filter { font: 600 15px var(--sans); color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.filter:hover { color: var(--ink); border-color: #3d4a6b; }
+.filter .n { font-size: 13px; margin-left: 6px; opacity: .75; }
+.filter[aria-pressed="true"] { color: #fff; background: linear-gradient(100deg, rgba(123,131,255,0.28), rgba(169,112,255,0.28)); border-color: #6b6fe0; }
+.grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; transition: border-color .2s, transform .25s cubic-bezier(.2,.8,.2,1); }
+.card:hover { border-color: #3d4a6b; transform: translateY(-3px); }
+.cover { position: relative; border-radius: 10px; aspect-ratio: 16 / 8; overflow: hidden; max-width: 100%; }
+.cover.data { background: linear-gradient(135deg, #222c63, #131a33 70%); }
+.cover.marketing { background: linear-gradient(135deg, #4b2766, #1b1430 70%); }
+.cover.design { background: linear-gradient(135deg, #5c3424, #22150f 70%); }
+.cover svg { position: absolute; right: 12px; bottom: 0; height: 88%; width: auto; opacity: 0.7; }
+.cover.shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.card:hover .cover.shot img { transform: scale(1.03); }
+.cover.gen svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 1; right: auto; bottom: auto; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.card:hover .cover.gen svg { transform: scale(1.03); }
+.cover.gen .cat { left: 12px; right: auto; top: 10px; }
+.cover .cat { position: absolute; left: 12px; top: 12px; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(0,0,0,0.35); color: #fff; }
+.card h3 { font-size: 19px; font-weight: 700; line-height: 1.3; padding: 0 4px; }
+.card p { margin: 0; color: var(--ink-2); font-size: 14.5px; flex: 1; padding: 0 4px; }
+.card .tags { padding: 0 4px; }
+.card .act { padding: 0 4px 4px; }
+.card .act a { display: inline-flex; align-items: center; gap: 6px; font-size: 14.5px; font-weight: 600; color: var(--a-ink); text-decoration: none; }
+.card .act a:hover { text-decoration: underline; }
+
+details.pdf { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-top: 14px; background: var(--surface-2); }
+details.pdf summary { gap: 12px; justify-content: flex-start; }
+details.pdf summary .ico { margin-left: auto; }
+.pdf-ico { flex: none; width: 44px; height: 54px; border-radius: 6px; background: #e5484d; color: #fff; font: 700 12px var(--sans); display: grid; place-items: center; }
+.pdf-txt { display: flex; flex-direction: column; gap: 2px; color: var(--ink); }
+.pdf-txt b { font-size: 14.5px; }
+.pdf-txt small { font-size: 13px; color: var(--ink-2); font-weight: 400; }
+.takeaways { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 6px; }
+@media (min-width: 720px) { .takeaways { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.takeaways > div { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+.takeaways b { display: block; color: #ff9a4d; font-size: 14px; margin-bottom: 6px; }
+.takeaways ul { margin: 0; padding-left: 18px; }
+.takeaways em { font-style: normal; color: #ffb27a; font-weight: 600; }
+.more p.step { margin: 22px 0 6px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #ff9a4d; }
+.more p.step:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.src { align-self: flex-start; display: inline-block; margin: 0 4px -4px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--ink-2); }
+.src.work, .src.freelance { color: #7fe3b4; border-color: #2c6b52; background: rgba(60,207,142,.10); }
+.src.personal { color: #9ff0e4; border-color: #2a6b6b; background: rgba(60,200,200,.08); }
+.doc { margin-top: 14px; }
+.doc h4, .more h4 { margin: 14px 0 6px; font-size: 14px; font-weight: 700; color: var(--ink); }
+.doc img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); display: block; margin-top: 8px; }
+.more ul, .more ol { margin: 0 0 10px; padding-left: 20px; color: var(--ink-2); font-size: 14.5px; }
+.more li { margin-bottom: 4px; }
+pre.code { max-height: 420px; overflow: auto; background: #0a0f1c; border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: 12.5px/1.5 var(--mono); color: #cfd6ff; white-space: pre; }
+/* Contact */
+.contact { background: linear-gradient(135deg, rgba(123,131,255,0.16), rgba(169,112,255,0.10)); border: 1px solid #34406a; border-radius: 20px; padding: 44px 22px; text-align: center; }
+.contact h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; }
+.contact p { color: var(--ink-2); margin: 12px auto 24px; max-width: 52ch; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.email { font-family: var(--mono); font-size: 14.5px; padding: 10px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); word-break: break-all; }
+footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fcard, .card, .btn, .thumb img { transition: none; } .fcard:hover, .card:hover, .btn:hover, .fcard:hover .thumb img { transform: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span>YL</span><span>Yi-Chieh LEE</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#featured">Hands-on cases</a>
+      <a href="#applied-ai">Applied AI</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="status"><i></i><span><b>Open to roles in:</b> Account Management · Data Analysis · Marketing Analytics</span></span>
+      <h1>Fluent in business, data<br>and <span class="hl">three languages.</span></h1>
+      <p>MSc in Data Science and Digital Marketing, EMLYON Business School.<br>Experience in digital marketing, marketing &amp; data analysis, data governance and dashboarding data pipeline. Also in technology industry B2B account management (cloud &amp; servers, B2B software).</p>
+      <div class="cta">
+        <a class="btn" href="#featured">See hands-on cases <svg class="ico"><use href="#i-down"/></svg></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/yichiehlee1234/" target="_blank" rel="noopener">LinkedIn <svg class="ico"><use href="#i-ext"/></svg></a>
+      </div>
+      <p class="langs">Languages: Français · English · 中文</p>
+    </div>
+  </section>
+
+  <section class="sec" id="featured">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Hands-on cases</h2>
+        <p>A marketplace pipeline, a global data product and a market study.</p>
+      </div>
+      <div class="featured">
+
+        <article class="fcard">
+          <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Marketing advertising data analysis"><defs><linearGradient id="fg0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc0"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs0" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg0)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs0)"/><image href="img/lbc-1.jpg" x="345" y="38" width="425" height="324" preserveAspectRatio="xMidYMid slice" clip-path="url(#fc0)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="170">Marketing</tspan><tspan x="34" y="216">advertising</tspan><tspan x="34" y="262">data analysis</tspan></text><rect x="36" y="280" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">Leboncoin</span></div>
+          <div class="fbody">
+            <span class="src work">Work</span>
+            <h3>Sixteen ad platforms, one dashboard</h3>
+            <span class="meta">Media Acquisition · April–June 2025</span>
+            <p>An automated Python pipeline and a 17-page Looker Studio dashboard replacing scattered Google Sheets for the media team.</p>
+            <div class="kpis"><div><b class="num">16</b><span>ad platforms</span></div><div><b class="num">17</b><span>dashboard pages</span></div><div><b class="num">3</b><span>verticals</span></div></div>
+            <ul class="tags"><li>Python</li><li>pandas</li><li>Looker Studio</li><li>APIs</li></ul>
+            <details>
+              <summary>Read the case <svg class="ico"><use href="#i-plus"/></svg></summary>
+              <div class="more">
+                <p class="step">The brief</p>
+                <h4>Project overview</h4>
+                <p>A three-month real-world project addressing Leboncoin's business needs, carried out by a team of five from EMLYON, running from April to June 2025, with a commitment of two days per week on-site collaboration with Leboncoin.</p>
+                <h4>The task aims to achieve two key objectives</h4>
+                <ol><li><b>Create data pipeline:</b> build automated data pipelines and clean/transform large advertising datasets using Python (pandas/NumPy) to deliver accurate, business-ready data for reporting, dashboarding and strategic decision making.</li><li><b>Data analysis and visualization:</b> analyze and clean data to create an interactive dashboard using Looker Studio tailored to the needs of the Media department. Our project will provide Leboncoin with an automated data model that enhances data visualization and decision-making for their Media team in the future.</li></ol>
+                <p class="step">Step 1 · What we built: the data pipeline</p>
+                <p>Google Ads data came in through a Google Sheets extension and other platforms through their marketing APIs. Fields from 4 Real Estate, 6 Recommerce and 6 Mobility platforms were mapped, cleaned and joined in Python (pandas, NumPy) in Google Colab.</p>
+                <ol><li><b>Data fetching:</b> advertising data pulled from every platform.</li><li><b>Data cleaning</b>, per vertical: Real Estate (4 platforms), Recommerce (6 platforms), Mobility (6 platforms).<ul><li>Align all platforms' columns, including field mapping</li><li>Concatenate each platform into one vertical file</li><li>Other cleaning steps: fill missing values, standardize data types</li><li>Concatenate the three clean vertical datasets into one file</li></ul></li><li><b>Upload data:</b> the unified dataset feeds the dashboard.</li></ol>
+                <img src="img/lbc-2.jpg" alt="Data pipeline structure for the Leboncoin project" loading="lazy">
+                <p>How it was built: the data flow from fetching to upload, the notebook structure (read Google Sheet, clean each vertical, merge the three verticals, upload back to Google Sheet), and the Python cleaning code that standardizes each platform's columns.</p>
+                <img src="img/lbc-3.jpg" alt="Accomplishments, data pipeline: data flow diagram, notebook data structure and Python data cleaning code" loading="lazy">
+                <div class="doc" data-doc="lbcclean" data-n="14" data-label="Data cleaning showcase (masked data)" data-collapsed="Python · data cleaning and integration across 16 ad platforms"></div>
+                <p class="step">Step 2 · What we built: 17 dashboards</p>
+                <p>The dashboard covers Google Ads, Meta and Snapchat: a weekly report of cost, clicks, impressions, ROAS, CPC, CTR, CPM, AOV and conversion rate against the previous week, plus a monthly pivot, the COMMEX budget report and a year-on-year view.</p>
+                <p>One dashboard with a Global Overview (Weekly, COMMEX report, YoY, PoP, dynamic dimension view, metric comparison) and a page set for each of the three verticals: dimension view, time view and pivot table, plus spend evolution for Mobility.</p>
+                <img src="img/lbc-1.jpg" alt="Accomplishment: dashboard structure, global overview and three verticals across 17 pages" loading="lazy">
+                <div class="doc" data-doc="lbcdash" data-n="17" data-label="Dashboard creation showcase (masked data)"></div>
+                <p class="step">Result</p>
+                <h4>Project management and outcomes</h4>
+                <p>Held bi-weekly meetings with the company. Demonstrated strong project management and communication skills to effectively collaborate with Leboncoin and meet requirements. The data pipelines and dashboards we developed are still being used by their Marketing Department.</p>
+                <h4>Skills required</h4>
+                <ul><li><b>Data management:</b> data cleaning, data processing, and data visualization.</li><li><b>Technical expertise:</b> Python, Google BI tool - Looker Studio, Advanced Excel.</li></ul>
+                <p class="step">What we learned</p>
+                <h4>Our key takeaways</h4>
+                <div class="takeaways">
+                  <div><b>Dashboard development</b><ul><li><em>User-centered and friendly</em> design is key</li><li>Interactivity boosts adoption</li><li>Visual clutter reduces usability: <em>prioritize clarity over comprehensiveness</em></li></ul></div>
+                  <div><b>Business understanding &amp; communication</b><ul><li>Stakeholder KPIs ≠ technical KPIs</li><li>Ask <em>'why'</em> behind every metric request</li><li><em>Visual storytelling</em> helps explain technical constraints</li></ul></div>
+                  <div><b>From data reporting to business-centric analysis</b><ul><li>Don't just ask "what data do you want to see?": <em>ask "what decision is this data supposed to support?"</em></li><li>A good <em>data model</em> reflects a deep understanding of the <em>business</em></li><li>Effective dashboards answer three questions: <em>What's happening? Why is it happening? What should we do?</em></li><li>We moved from being data deliverers to becoming <em>business translators</em>.</li></ul></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="fcard">
+          <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Data governance and product ownership"><defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc1"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs1" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg1)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs1)"/><g font-family="Fira Sans, Arial, sans-serif" text-anchor="middle"><line x1="557" y1="200" x2="430" y2="95" stroke="#7b83ff" stroke-width="2.5" opacity=".55"/><line x1="557" y1="200" x2="685" y2="95" stroke="#7b83ff" stroke-width="2.5" opacity=".55"/><line x1="557" y1="200" x2="705" y2="215" stroke="#7b83ff" stroke-width="2.5" opacity=".55"/><line x1="557" y1="200" x2="640" y2="322" stroke="#7b83ff" stroke-width="2.5" opacity=".55"/><line x1="557" y1="200" x2="450" y2="322" stroke="#7b83ff" stroke-width="2.5" opacity=".55"/><rect x="390" y="78" width="80" height="34" rx="17" fill="#eef0ff" stroke="#7b83ff" stroke-width="1.5"/><text x="430" y="101" font-size="15" font-weight="600" fill="#1d2a6b">IT</text><rect x="637" y="78" width="96" height="34" rx="17" fill="#eef0ff" stroke="#7b83ff" stroke-width="1.5"/><text x="685" y="101" font-size="15" font-weight="600" fill="#1d2a6b">Business</text><rect x="652" y="198" width="105" height="34" rx="17" fill="#eef0ff" stroke="#7b83ff" stroke-width="1.5"/><text x="705" y="221" font-size="15" font-weight="600" fill="#1d2a6b">Marketing</text><rect x="560" y="305" width="159" height="34" rx="17" fill="#eef0ff" stroke="#7b83ff" stroke-width="1.5"/><text x="640" y="328" font-size="15" font-weight="600" fill="#1d2a6b">Local countries</text><rect x="344" y="305" width="213" height="34" rx="17" fill="#eef0ff" stroke="#7b83ff" stroke-width="1.5"/><text x="450" y="328" font-size="15" font-weight="600" fill="#1d2a6b">3 Master Data Domains</text><circle cx="557" cy="200" r="62" fill="#2b3a8f"/><text x="557" y="194" font-size="22" font-weight="800" fill="#ffffff">BMR</text><text x="557" y="218" font-size="13" font-weight="600" fill="#c9ccff">Single Source</text><text x="557" y="234" font-size="13" font-weight="600" fill="#c9ccff">of Truth</text></g><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="152">Data governance</tspan><tspan x="34" y="200">&amp; product</tspan><tspan x="34" y="248">ownership</tspan></text><rect x="36" y="278" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">L'Oréal</span></div>
+          <div class="fbody">
+            <span class="src work">Work</span>
+            <h3>Beauty Market Referential</h3>
+            <span class="meta">6-month internship · Global Consumer &amp; Market Insights · 2026</span>
+            <p>Product Owner for the global launch of one beauty referential, so every country's sell-out and panel data describe products the same way.</p>
+            <div class="kpis"><div><b class="num">500+</b><span>stakeholders</span></div><div><b class="num">3</b><span>Master Data Domains</span></div><div><b class="num">1,244</b><span>brand requests tracked</span></div></div>
+            <ul class="tags"><li>BigQuery</li><li>SQL</li><li>GCP</li><li>Power BI</li></ul>
+            <details>
+              <summary>Read the case <svg class="ico"><use href="#i-plus"/></svg></summary>
+              <div class="more">
+                <p class="step">My role · 6-month internship, Product Owner</p>
+                <ul><li><b>Defined the Single Source of Truth</b> with IT, Business, Marketing, local countries and three Master Data Domains, across a group of 97,000 employees</li><li><b>Validated data quality</b> in SQL on BigQuery (Google Cloud Platform)</li><li><b>Drove adoption</b> among 500+ global stakeholders with data dictionaries, Power BI dashboards and user training</li></ul>
+                <p>The Power BI dashboards include a worldwide sales analysis used by top management and a tracker for brand requests from every zone.</p>
+                <h4>Brand Request tracker</h4><p>Brand requests from zones and countries are collected in an online Excel sheet. I automated the flow so the data is compiled and cleaned from that sheet and fed straight into the Power BI report, which tracks every request from submission to the BMR decision without manual copying.</p><p>For each brand request, the report shows which universe it belongs to (Mass, Dermo, Luxe, Pro), the brand's website, and its current status, with filters by brand, zone, country and request type.</p>
+                
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="fcard">
+          <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Market analysis and data storytelling"><defs><linearGradient id="fg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc2"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg2)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs2)"/><image href="img/abnb-cover.jpg" x="345" y="38" width="425" height="324" preserveAspectRatio="xMidYMid slice" clip-path="url(#fc2)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><image href="img/badge/airbnb_logo.png" x="36" y="300" height="38" width="130" preserveAspectRatio="xMinYMid meet"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="152">Market analysis</tspan><tspan x="34" y="200">&amp; data</tspan><tspan x="34" y="248">storytelling</tspan></text><rect x="36" y="278" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">Airbnb NYC</span></div>
+          <div class="fbody">
+            <span class="src academic">Academic project</span>
+            <h3>Where New York's good listings hide</h3>
+            <span class="meta">Market study · New York City</span>
+            <p>Which Airbnb listings perform, why, and how more visibility for the right ones could lift revenue.</p>
+            <div class="kpis"><div><b class="num">36,401</b><span>listings analysed</span></div><div><b class="num">3.5%</b><span>good listings</span></div><div><b class="num">+25%</b><span>est. revenue</span></div></div>
+            <ul class="tags"><li>Python</li><li>Statistics</li><li>Random Forest</li><li>Tableau</li></ul>
+            <details>
+              <summary>Read the case <svg class="ico"><use href="#i-plus"/></svg></summary>
+              <div class="more">
+                <p>Manhattan and Brooklyn hold 91% of listings. Ratings average 92, yet the typical listing has only about 12 reviews. We classified listings from log-transformed, standardised review counts and scores, and a Random Forest pointed to price, beds and neighbourhood as the other drivers.</p>
+                <p>The action plan gives more visibility to bad listings and listings with no record in Manhattan priced around $99 to $199. Using one review as one booked night, estimated revenue grows from $46.5M to $58.3M.</p>
+                <p>Full report, 13 pages:</p>
+                <img src="img/abnb-r-01.jpg" alt="Airbnb report page 1: Listing overview in NYC, title slide" loading="lazy">
+                <img src="img/abnb-r-02.jpg" alt="Airbnb report page 2: agenda" loading="lazy">
+                <img src="img/abnb-r-03.jpg" alt="Airbnb report page 3: overview, concentration of listings in Manhattan and Brooklyn" loading="lazy">
+                <img src="img/abnb-r-04.jpg" alt="Airbnb report page 4: listing performance, Manhattan versus Brooklyn" loading="lazy">
+                <img src="img/abnb-r-05.jpg" alt="Airbnb report page 5: bad listings charge more, good listings offer more beds" loading="lazy">
+                <img src="img/abnb-r-06.jpg" alt="Airbnb report page 6: action plan targets and methods" loading="lazy">
+                <img src="img/abnb-r-07.jpg" alt="Airbnb report page 7: detailed action plan for Manhattan" loading="lazy">
+                <img src="img/abnb-r-08.jpg" alt="Airbnb report page 8: detailed action plan for Brooklyn" loading="lazy">
+                <img src="img/abnb-r-09.jpg" alt="Airbnb report page 9: potential 25% revenue growth" loading="lazy">
+                <img src="img/abnb-r-10.jpg" alt="Airbnb report page 10: dashboard" loading="lazy">
+                <img src="img/abnb-r-11.jpg" alt="Airbnb report page 11: methodology of listing classification, data exploration and processing" loading="lazy">
+                <img src="img/abnb-r-12.jpg" alt="Airbnb report page 12: methodology, other factors and model" loading="lazy">
+                <img src="img/abnb-r-13.jpg" alt="Airbnb report page 13: thank you" loading="lazy">
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="applied-ai">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Applied AI</h2>
+        <p>AI tools I built and use in real life.</p>
+      </div>
+      <div class="grid" id="ai-grid"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projects</h2>
+        <p>Analysis, dashboards, marketing strategy and design work.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter" type="button" id="f-all" data-f="all" aria-pressed="true">All<span class="n num">22</span></button>
+        <button class="filter" type="button" id="f-data" data-f="data" aria-pressed="false">Data<span class="n num">13</span></button>
+        <button class="filter" type="button" id="f-marketing" data-f="marketing" aria-pressed="false">Marketing<span class="n num">6</span></button>
+        <button class="filter" type="button" id="f-design" data-f="design" aria-pressed="false">Design<span class="n num">3</span></button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Let's connect.</h2>
+        <p>Based in Paris and Taiwan, open to roles across France, Taiwan or remote. I'd be glad to talk.</p>
+        <div class="row">
+          <span class="email" id="email">yichiehlee0802@gmail.com</span>
+          <button class="btn" type="button" id="copy-email"><svg class="ico"><use href="#i-copy"/></svg><span>Copy email</span></button>
+          <a class="btn ghost" href="https://www.linkedin.com/in/yichiehlee1234/" target="_blank" rel="noopener">LinkedIn <svg class="ico"><use href="#i-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Yi-Chieh LEE · Paris</footer>
+
+<script type="text/plain" id="sql-code">-- MSc in DMDS - 2024-25
+-- 7CPSQL / EMLYON Business School
+-- YI-CHIEH, LEE
+
+
+-- For the FINAL PROJECT you will use the &#x27;Divvy&#x27; database. 
+-- It is part of a dataset derived from a bycicle sharing service in the city of Chicago, IL (USA) 
+-- The service is similar to Lyon&#x27;s &quot;Velo&#x27;v&quot;. 
+-- The database has two tables: 
+-- (i) Trips, containing all the trips from the year 2018
+-- (ii) Stations, which contains some data on each of the stations.
+
+-- The data has been made available by Motivate International Inc. under this license:
+-- https://ride.divvybikes.com/data-license-agreement and the full dataset as originally provided can be found here:
+-- https://divvy-tripdata.s3.amazonaws.com/index.html
+-- To give you a feeling for the data, we plotted the stations from the Stations table here:
+-- https://www.google.com/maps/d/edit?mid=1o8GHKNl2UdNlCEVGWqzjTWxOoyB-EEg&amp;usp=sharing
+-- More about Divvy here: https://divvybikes.com/system-data
+
+-- When completing this project as a group, remember to make your SQL code clear and comment on all queries.
+-- Marks are provided for attempts made, so it&#x27;s better to make an attempt than to completly leave a question out.
+
+-- Marking scheme:
+-- Part1 /4 ; Part2 /5 ; Part3 /7 (4+3) ; Quality of comments and presentations /4
+
+USE Divvy;
+
+-- PART 1 [4 marks]
+-- Explore the database and its tables, then discuss your findings. Consider all the usual aspects in database exploration:
+-- (e.g., are the data types assigned to each field correct? Are there any duplicates?)
+-- Answer this question: What is the common key between the two tables?
+-- Remember to take into account where the data comes from.
+describe Stations;
+-- onlinedate shouldn&#x27;t be text
+select * from Stations;
+-- convert onlinedate to datetime:
+SELECT STR_TO_DATE(onlinedate, &#x27;%Y-%m-%d&#x27;) AS converted_date
+FROM Stations
+WHERE onlinedate IS NOT NULL;
+
+describe Trips;
+select * from Trips limit 10;
+-- end_time shouldn&#x27;t be text
+-- convert it to datetime:
+SELECT STR_TO_DATE(end_time, &#x27;%Y-%m-%d %H:%i:%s&#x27;) AS converted_end_time
+FROM Trips
+WHERE end_time IS NOT NULL;
+
+-- tripduration shouldn&#x27;t be text
+-- convert it to interger:
+select CAST(tripduration as UNSIGNED INTEGER) as converted_tripduration
+ from Trips 
+ ;
+
+-- birthyear shouldn&#x27;t be double
+-- convert it to interger:
+select CAST(birthyear as UNSIGNED INTEGER) as converted_birthyear
+ from Trips 
+ ;
+-- check for null values:
+select * from Stations
+ where id is null or
+ name is null or
+ latitude is null or
+ longitude is null or
+ onlinedate is null or
+ dpcapacity is null or
+ landmark is null
+ ;
+-- There&#x27;s no null value in Station table
+
+select * from Trips
+ where trip_id is null or
+ bikeid is null or
+ start_time is null or
+ end_time is null or
+ tripduration is null or
+ birthyear is null or
+ from_station_id is null or
+ to_station_id is null or
+ usertype is null or
+ gender is null
+ ;
+-- There&#x27;s no null value in Trips table
+
+-- check for duplicates:
+select distinct id, name, latitude, longitude, dpcapacity, landmark, onlinedate, count(*) from Stations
+-- selects the unique combination
+group by id, name, latitude, longitude, dpcapacity, landmark, onlinedate
+-- groups the rows by all the selected fields
+having count(*)&gt;1;
+-- filters the results to return only those with more than one occurrence
+-- there&#x27;s no duplicate in Stations table
+
+select distinct usertype, tripduration, trip_id, to_station_id, start_time, gender, from_station_id, end_time, birthyear, bikeid, count(*) from Trips
+group by usertype, tripduration, trip_id, to_station_id, start_time, gender, from_station_id, end_time, birthyear, bikeid
+having count(*)&gt;1;
+-- there&#x27;s no duplicate in Trips table
+
+-- Answer this question: What is the common key between the two tables?
+describe Stations;
+describe Trips;
+-- The from_station_id and to_station_id fields in the Trips table act as foreign keys, linking to the id field in the Stations table
+
+
+-- PART 2 [5 marks]
+-- Imagine your database administrator is a slacker, and hasn&#x27;t updated the Stations table since 2013.
+-- (We uploaded the 2013 stations on purpose here of course!).
+-- How many unique stations are in the Trips but not in the Stations? 
+
+-- TIPS: 
+-- Include stations &quot;from_station_id&quot; as well as stations &quot;to_station_id&quot;.
+-- You will need to use the keyword UNION, which combines the results from two queries into one column, dropping any duplicates
+-- You can do a mini-practice here to understand the keyword before applying it: https://www.w3schools.com/sql/sql_union.asp
+-- Remember to also display your results as a percentage of the total number of stations and not only as a absolute number.
+-- We are suggesting a four-step plan to help you. You don&#x27;t have to follow it, but it would be very helpful.
+-- Don&#x27;t forget to make your reasoning clear and to comment each of your steps.
+
+-- Step 1: Write a query to know which station IDs in the &quot;from_station_id&quot; field are not in the Stations table.
+-- Then do the same for the column &quot;to_station_id&quot;.
+SELECT DISTINCT from_station_id FROM Trips
+WHERE from_station_id 
+NOT IN (SELECT id FROM Stations);
+-- result shows the station IDs in the &quot;from_station_id&quot; field are not in the Stations table
+
+SELECT DISTINCT to_station_id FROM Trips
+WHERE to_station_id 
+NOT IN (SELECT id FROM Stations);
+-- result shows the station IDs in the &quot;to_station_id&quot; field are not in the Stations table
+
+-- Step 2: Now, combine your two tables in STEP 1, using the keyword UNION.
+-- A UNION will drop any duplicates, so you just need to count everything in the combined table
+-- This will essentially represent the number of all missing stations.
+
+SELECT DISTINCT from_station_id  as Missing FROM Trips
+WHERE from_station_id 
+NOT IN (SELECT id FROM Stations)
+
+Union
+
+SELECT DISTINCT to_station_id as Missing FROM Trips 
+WHERE to_station_id 
+NOT IN (SELECT id FROM Stations);
+-- result shows the distict Stations IDs that in the &quot;from_station_id&quot; field are not in the Stations table and in the &quot;to_station_id&quot; field are not in the Stations table
+
+
+-- PART 3 [7 marks (4+3)]
+-- The marketing department wants to know the age distribution of our users, and how their usage differs (in terms of trip durations). 
+-- Give them a plot of age (on the X-axis), and average tripduration on the y-axis. 
+
+-- PART 3.1
+-- To achieve this, this, write a query that returns both age and average tripduration data from the Divvy Database
+-- You need to extract the age from the birthyear field in the Trips table, given that this data contains all the trips from the year 2018
+-- Make sure to not include missing values, and and order results by age. 
+-- calulate age and average trip durations:
+SELECT 
+    YEAR(CURRENT_DATE) - birthyear AS age,
+    -- calculate age
+    AVG(tripduration) AS avg_tripduration
+    -- calcualate average tripduration
+FROM Trips
+WHERE birthyear &gt; 0 AND YEAR(CURRENT_DATE) - birthyear &gt; 0 and birthyear is not null
+-- exclude the 0 birthyrear, age below 0 and null value
+GROUP BY YEAR(CURRENT_DATE) - birthyear
+-- to see average tripduration by age
+ORDER BY age;
+-- order results for better readability
+
+-- Now, export your data into a CSV file, then convert into Excel, and make the plot in Excel.
+-- Explain your steps and discuss your findings. Please hand in your excel file, plus a discussion of what you did 
+-- and what your conclusions are (Excel or SQL script comments). 
+-- There appears to be a difference between the way the plot behaves before and after an age of about 65. 
+-- Discuss what you think the reason is for the shape of the plot overall, and this difference as well.
+
+-- PART 3.2
+-- Change your query in 3.1 by using FLOOR([your data]/10)*10 AS age_bin in a query that counts the number of trips 
+-- grouped per age ranges (represented by age_bin, e.g., 10,20,30,40,50 etc.) instead of absolute values of age. 
+-- This is a histogram in tabular form, which can then be exported to Excel in order to plot it.
+-- Make the plot, then compare it to the one from your Query in 3.1. 
+-- If you had done only this query (and not Query 3.1), would you have arrived at a different conclusion? 
+-- Would it have been valid? Why yes or why not?
+SELECT 
+    FLOOR((YEAR(CURRENT_DATE) - birthyear) / 10) * 10 AS age_bin,
+    -- set age bin as 10
+    COUNT(*) AS trip_count
+    -- count the trip
+FROM Trips
+WHERE birthyear IS NOT NULL AND YEAR(CURRENT_DATE) - birthyear &gt; 0 and birthyear &gt;0
+-- exclude the 0 birthyrear, age below 0 and null value
+GROUP BY age_bin
+-- to see trip count by age
+ORDER BY age_bin;
+-- order results for better readability
+
+
+-- Question 1
+-- How does user behavior vary based on population density in a station’s service area?
+-- Add demographic database &#x27;Demographics&#x27;, including population_density, landmark
+describe Stations;
+select * from Stations limit 10;
+SELECT 
+    Stations.name AS station_name,
+    Demographics.population_density,
+    COUNT(Trips.trip_id) AS trip_count -- Count the number of trips starting from the station
+FROM 
+    Trips
+-- Join Trips table with Stations to match each trip with the respective starting station, also assume that Station tables this time is updated and updated date is same as Trips table
+INNER JOIN 
+    Stations ON Trips.from_station_id = Stations.id
+-- Join Stations table with Demographics to get population density for the station&#x27;s service area
+INNER JOIN 
+    Demographics ON Stations.landmark = Demographics.landmark
+-- Group by station name and population density to aggregate trip counts per station
+GROUP BY 
+    station_name, population_density
+ORDER BY 
+    trip_count DESC;
+    
+-- Question 2
+-- What is the impact of promotional offers or events on trip volumes?
+-- Add &#x27;Promotions&#x27; database, including promo_name, start_date, end_date
+describe Trips;
+SELECT 
+    Promotions.promo_name, 
+    COUNT(Trips.trip_id) AS trip_count, -- Count the total number of trips during the promotion period
+    AVG(Trips.tripduration) AS avg_trip_duration -- Calculate the average duration of trips during the promotion
+FROM 
+    Trips
+-- Join Promotions table to filter trips that occurred during the promotional period
+LEFT JOIN 
+    Promotions ON DATE(Trips.start_time) BETWEEN Promotions.start_date AND Promotions.end_date
+-- Group by promotion name to calculate trip metrics for each promotion
+GROUP BY 
+    Promotions.promo_name
+-- Sort results by trip count in descending order to identify the most effective promotions
+ORDER BY 
+    trip_count DESC;
+    
+-- Question 3
+-- Which areas have the highest unmet demand for bike stations?
+-- Add user search database - &#x27;Searches&#x27;, including search location_station_ID and if the search is fulfilled
+-- Select location and count unfulfilled search requests
+SELECT 
+    Searches.location_station_ID, 
+    COUNT(Searches.id) AS unfulfilled_requests -- Count the number of unfulfilled requests
+FROM 
+    Searches
+-- Filter for only unfulfilled requests (Boolean) 
+WHERE 
+    Searches.fulfilled = 0
+-- Group by location to sum unfulfilled requests for each area
+GROUP BY 
+    Searches.location_station_ID
+-- Sort results by unfulfilled requests in descending order to identify areas with the highest unmet demand
+ORDER BY 
+    unfulfilled_requests DESC;
+    
+-- Question 4
+-- What is the busiest time of day for trips, and how does it differ by day of the week?
+SELECT 
+    HOUR(start_time) AS hour_of_day, -- Extract the hour from the trip&#x27;s start time
+    DAYNAME(start_time) AS day_of_week, -- Extract the day of the week from the trip&#x27;s start time
+    COUNT(*) AS trip_count -- Count the total number of trips for the combination of hour and day
+FROM 
+    Trips
+-- Group by day of the week and hour of the day to aggregate trip counts
+GROUP BY 
+    day_of_week, hour_of_day
+-- Sort results by trip count in descending order to identify the busiest times
+ORDER BY 
+    trip_count DESC;
+-- We can see the busiest hour is 17:00 on Monday to Friday, and weekday is busier than weekends, probabliy most user use Divvy bike for commuting
+-- To varify this hyphothesis we can add &#x27;Trip_purpose&#x27; database
+SELECT 
+    trip_purpose, 
+    COUNT(*) AS trip_count -- Count the number of trips for each purpose
+FROM 
+    Trip_purpose 
+-- Inner join in order to link trip.id from Trip table
+Inner Join Trip_purpose on Trip.trip_id=Trip_purpose.trip_id
+-- Filter it by adding WHERE clause of what we observed above, the most busiest of the period and the day 
+WHERE
+	Hour(start_time)=17 And
+    Datetime(start_time) in (&quot;Monday&quot;,&quot;Tuesday&quot;,&quot;Wednesday&quot;,&quot;Thursday&quot;,&quot;Friday&quot;)
+ -- Group by trip purpose to aggregate trip counts   
+GROUP BY 
+    Trip_purpose.trip_purpose
+-- Sort results by trip count in descending order to identify the most common trip purposes
+
+ORDER BY 
+    trip_count DESC;
+    
+    
+-- Question 5
+-- What is the customer satisfaction level across different stations?
+-- Add &#x27;Feedback&#x27; database, including ratings
+SELECT 
+    Feedback.station_id, 
+    Stations.name AS station_name, 
+    AVG(rating) AS avg_rating, -- Calculate the average rating for each station
+    COUNT(comment) AS feedback_count -- Count the number of feedback comments for each station
+FROM 
+    Feedback
+-- Join Stations table to match feedback with the respective station
+INNER JOIN 
+    Stations ON Stations.id = Feedback.station_id
+-- Group by station ID and name to aggregate feedback data for each station
+GROUP BY 
+    station_id, station_name
+-- Sort results by average rating in descending order to identify the highest-rated stations
+ORDER BY 
+    avg_rating DESC;
+</script>
+<script>
+(function () {
+  function pad(i, d) { var t = String(i); while (t.length < d) t = "0" + t; return t; }
+  function docHTML(k, n, label) {
+    var d = String(n).length, h = '<div class="doc"><h4>' + label + ' · ' + n + (n > 1 ? ' pages' : ' page') + '</h4>';
+    for (var i = 1; i <= n; i++) h += '<img src="img/doc/' + k + '-' + pad(i, d) + '.jpg" alt="' + label + ', page ' + i + '" loading="lazy">';
+    return h + '</div>';
+  }
+  document.querySelectorAll(".doc[data-doc]").forEach(function (el) {
+    var k = el.getAttribute("data-doc"), n = +el.getAttribute("data-n"), lab = el.getAttribute("data-label"), col = el.getAttribute("data-collapsed");
+    el.outerHTML = col
+      ? '<details class="pdf"><summary><span class="pdf-ico">PDF</span><span class="pdf-txt"><b>' + lab + '</b><small>' + col + ' · ' + n + ' pages</small></span><svg class="ico"><use href="#i-plus"/></svg></summary>' + docHTML(k, n, lab) + '</details>'
+      : docHTML(k, n, lab);
+  });
+  var D = "img/doc/";
+  var projects = [
+    { c: "data", t: "Call Center Performance", d: "The project mission is to provide a call center, ServiceSpot, an IT company, with a complete solution that helps non-data professionals analyse data through clear reports. 96.8% of calls within SLA, 19.9 s average wait, $6.57M revenue over 2020–2023.", tags: ["Power BI", "Power Query", "DAX"], img: "img/cc-1.jpg", alt: "Power BI call center overview",
+      text: "<h4>Goals of the project</h4><ul><li>Retrieve data from the many sources</li><li>Apply necessary transformations in Power Query</li><li>Design a proper data model</li><li>Create the measures that answer business questions and give actionable insight</li><li>Design a clear report that provides all the answers the business needs</li></ul>",
+      more: [["img/cc-2.jpg", "Revenue by city and wait time by time of day"], ["img/cc-3.jpg", "Calls by weekday and abandoned-call wait time by call type"]] },
+    { c: "data", t: "Power BI Sales Report", d: "A Power BI sales report: total revenue by category, shipped orders by carrier, and sales by brand and category across continents.", tags: ["Power BI", "Sales analysis", "Dashboard"], img: D + "powerbi-1.jpg", alt: "Power BI sales report", docs: [["powerbi", 3, "Power BI sales report"]] },
+    { c: "data", t: "Amazon Beauty Products", d: "Analysing 30,000 Amazon retail store records to help a manager extract insights for marketing strategy, using Python (pandas, NumPy, Matplotlib, Seaborn).", tags: ["Python", "pandas", "NumPy", "Seaborn"], img: D + "s_amazon.jpg", alt: "Amazon beauty product analysis", l: "https://drive.google.com/file/d/1jalox9RnXKmbV3a38or_xtCCWPRkyxOP/view?usp=sharing", lt: "View code",
+      text: "<p>The dataset is first cleaned by removing unnecessary data, then efficient Python code answers these questions:</p><ol><li>How many stores are in the dataset?</li><li>Which stores sell the most items?</li><li>How many brands are selling items in the dataset?</li><li>Which brands have the highest ratings?</li><li>Which products have the highest average rating? Top 50 products with over 1,000 ratings, sorted by average rating.</li><li>Do these top-rated products share common characteristics?</li><li>Display images and details of the top 10 highest-rated products.</li><li>What is a good marketing strategy for a company launching its first product? Key factors: sufficient ratings and good scores, detailed product descriptions, high-quality images.</li><li>How many of the top 50 highest-rated products have descriptions?</li><li>Which stores have average ratings lower than 3? These may need further investigation or intervention.</li><li>Is there a relation between average rating and number of ratings?</li><li>Does the number of images influence the average rating?</li><li>How many products have fewer than 3 images, and what percentage is that?</li><li>How many products rate above average among those with more than 30 ratings? Products with more than 30 ratings offer a larger sample size.</li></ol><p>Additional analysis: relevant charts and tables for each answer, and 5+ further questions based on the data's characteristics.</p>",
+      docs: [["amazon", 29, "Code and analysis"]] },
+    { c: "data", t: "Netflix Recommendation & Analysis App", d: "A web app built in Python that provides film recommendation and analysis based on the Netflix USA catalogue, with two main pages: Film Recommendation and Film Analysis.", tags: ["Python", "Streamlit", "Plotly", "BeautifulSoup", "API"], img: D + "s_netflix.jpg", alt: "Netflix recommendation app", l: "https://netflixproject.streamlit.app/", lt: "Open app",
+      text: "<h4>How I built the app with Python</h4><ol><li>Original dataset sourced from Kaggle (Netflix TV shows and movies).</li><li>Combined with Netflix Original production data scraped from an IMDb list of all Netflix Originals, and mapped to the dataset.</li><li>Cleaned the data.</li><li>Fetched each film's poster with the TMDB API.</li></ol>" },
+    { c: "data", t: "Chicago Bike Sharing (SQL)", d: "As a business analyst in a data analytics company, I used SQL to explore large datasets from Chicago's bike-sharing service (Divvy) and delivered analysis to the client. I also built an ER model in Hackolade to show the relationships between tables, and used Python to plot the main correlations.", tags: ["SQL", "ER model", "Hackolade", "Python"], img: D + "s_sql.jpg", alt: "Chicago bike sharing SQL project", l: "https://drive.google.com/drive/folders/1Z4EaHr784HUgFtT_tDB6Atq2DKAXtUdC?usp=sharing", lt: "View code",
+      sql: true, docs: [["er", 1, "ER model"], ["sqlrep", 2, "Written report"]] },
+    { c: "data", t: "GPU Spec Explorer (R)", d: "A user-friendly website in R for choosing graphics cards, with GPU recommendations for five user types: gamers, 3D creators, deep learning engineers, graphic designers and office workers.", tags: ["R", "Shiny", "Python", "UI/UX"], img: D + "s_r2.jpg", alt: "Spec Dashboard: GPU suggestion by user type, release year, manufacturer and product filters, customization options", l: "https://yichiehlee.shinyapps.io/GPU_spec/", lt: "Open app",
+      text: "<ul><li>Data: GPUs Full Specs, from Kaggle (specs of GPUs up to 2025)</li><li>Raw data size: 3,056 rows, 16 columns</li><li>Objective: user-friendly website development for graphics cards</li><li>Context: I previously worked in sales in the server industry, where I often quoted clients combinations of CPUs, GPUs, memory, storage, Ethernet cards and other components. My former company used Excel to select combinations for each client. A dashboard to help the sales team make these selections saves significant time and improves efficiency.</li><li>I converted the Excel file to RData and used Python to clean the data, keeping the 10 relevant columns.</li><li>The process goes from raw data to an R report rendered as HTML, then into a complete website.</li></ul>",
+      more: [[D + "s_r1.jpg", "R language: data analysis and web development"]] },
+    { c: "data", t: "Lead Generation Monitoring", d: "Acting as Digital Marketing Director at HubSpot, I prepared a board presentation in Looker Studio analysing which marketing channels generate quality leads most efficiently. With HubSpot considering a 20% cut to the marketing budget, the board needs to know which channels deliver the best ROI across the stages of the buyer's journey.", tags: ["Looker Studio", "Lead generation", "ROI"], img: D + "s_lead.jpg", alt: "Lead generation dashboard", l: "https://lookerstudio.google.com/reporting/e8ff7430-6cc8-4647-a42a-aa928b30d78c/page/fAkCF", lt: "Open dashboard",
+      docs: [["hubspot", 1, "HubSpot lead generation report"], ["leadgen", 5, "Lead generation report"]] },
+    { c: "data", t: "Retail Sales Analysis (DataCamp)", d: "Data analysis for a sales department in retail: exploratory data analysis (EDA), data cleaning, and recommendations to improve sales performance from the business insights.", tags: ["SQL", "Python", "EDA"], img: D + "s_datacamp.jpg", alt: "DataCamp retail sales analysis", l: "https://drive.google.com/file/d/1EIv4WRtxkShlCiI-EshL1pNFB0EdRZQh/view?usp=sharing", lt: "View project",
+      docs: [["datacamp", 11, "DataCamp data analyst project"]] },
+    { c: "data", t: "Loan Proposal Dashboard (Excel)", d: "A loan proposal dashboard built in Advanced Excel.", tags: ["Excel", "Dashboard", "Accounting"], img: D + "s_excel1.jpg", alt: "Excel loan proposal dashboard", l: "https://drive.google.com/file/d/19BI7ktJkvRCMoBzbZbwFrT-k6h6oEeuA/view?usp=sharing", lt: "View file",
+      more: [[D + "s_excel2.jpg", "Dashboard built in Excel"]] },
+    { c: "data", t: "Tableau Storytelling: Airbnb NYC", d: "An analysis of raw Airbnb listing data in New York City to identify performance trends, challenges and opportunities to improve listing visibility and drive bookings, giving stakeholders actionable insight with Python and Tableau.", tags: ["Tableau", "Python", "Storytelling"], img: "img/tab-1.jpg", alt: "Tableau dashboard of Airbnb listing performance",
+      text: "<h4>Key contributions</h4><ul><li>Data analysis and insights</li><li>Methodology</li><li>Actionable strategies</li></ul>",
+      more: [["img/tab-2.jpg", "Tableau dashboard, listing performance detail"], ["img/tab-3.jpg", "Tableau dashboard, summary view"]] },
+    { c: "data", t: "Data Governance", d: "A presentation on data governance, GDPR and data security.", tags: ["GDPR", "Data security", "Governance"], img: D + "s_gov.jpg", alt: "Data governance presentation", l: "https://drive.google.com/file/d/1ri72P8WWCQb7ciOzGGvCF30EeQoDiEWR/view?usp=sharing", lt: "View report",
+      docs: [["gov", 11, "Data governance presentation"]] },
+    { c: "data", t: "Machine Learning: Customer Churn", d: "Group project classifying customers into churners and non-churners, using behavioural and transactional data to guide retention strategy. Customer attrition erodes revenue and inflates marketing spend; acquiring a new buyer can cost 5 to 25 times more than retaining one.", tags: ["Machine learning", "Python", "Classification"], img: D + "s_ml.jpg", alt: "Customer churn machine learning project",
+      docs: [["ml", 24, "Machine learning group project"]] },
+    { c: "data", t: "Elis: Digital Transformation Proposal", d: "A consulting competition analysing the real-world challenges and pain points of Elis, a circular services company. Our team developed digital solutions and workflows (LinenLink, connecting every thread with smart tracking) and pitched them to industry leaders.", tags: ["Consulting", "Digital transformation", "Pitch"], img: D + "s_elis.jpg", alt: "Elis digital transformation proposal",
+      docs: [["elis", 4, "LinenLink pitch for Elis"]] },
+    { c: "marketing", t: "Programmatic Advertising", d: "A marketing strategy for a Michelin-starred restaurant focused on programmatic advertising, to increase brand awareness, attract luxury diners and boost reservations. Covers content strategy, media strategy and KPIs such as CTR, conversion rate, retention rate, CPA and viewability.", tags: ["Programmatic", "Media strategy", "KPIs"], img: D + "s_prog.jpg", alt: "Programmatic advertising project", l: "https://drive.google.com/file/d/1sxSXxY3avM7tC8vETHO_WQ9xsw1tjDQy/view?usp=sharing", lt: "View plan",
+      docs: [["prog", 15, "Programmatic advertising report"]] },
+    { c: "marketing", t: "Digital Marketing in an AI World (Sonos)", d: "A deep analysis of an existing business's digital presence and touchpoints, with quantitative and qualitative analysis and the customer journey, leading to a digital marketing campaign illustrated in a video.", tags: ["Customer journey", "Campaign", "Video"], img: D + "s_sonos.jpg", alt: "Sonos digital marketing project", l: "https://drive.google.com/file/d/1WqizsS60yWgMkK3y99X9G0Ajmz8Zc11R/view?usp=sharing", lt: "View project",
+      docs: [["sonos", 26, "Sonos project"]] },
+    { c: "marketing", t: "Digital Business Model", d: "Designing a new business by assessing the dominant industry logic and the magic triangle (who, what, how, why), then building an innovative business model and a unique value proposition to stand out in the market.", tags: ["Business model", "Value proposition"], img: D + "s_faem.jpg", alt: "Digital business model project", l: "https://drive.google.com/file/d/1TGWWJey7Uvon1slTEOQr18IkCB1FA-mX/view?usp=sharing", lt: "View project",
+      docs: [["faem", 16, "Final report"]] },
+    { c: "marketing", t: "AURA Magazine Website", d: "A magazine-style website called AURA, offering engaging content across topics, with an attractive skin design, SEO optimisation and keywords, user-friendly navigation and a visually appealing layout, curating 20+ high-quality content pieces. This project is ongoing.", tags: ["SEO", "Content", "Web creation"], img: D + "s_aura.jpg", alt: "AURA magazine website", l: "https://stephaneb6.sg-host.com/", lt: "Visit site" },
+    { c: "marketing", t: "CRM Digital Solution", d: "CRM digital solution project.", tags: ["CRM", "Digital marketing"], img: D + "s_crmsol.jpg", alt: "CRM digital solution" },
+    { c: "marketing", t: "Thesis: Analyzing and Predicting CRM Campaign Effectiveness", d: "Master's thesis: Analyzing and Predicting CRM Campaign Effectiveness on Customer Engagement and Conversion, Using Machine Learning Method and Customer Transaction/Behavioral Data.", tags: ["CRM", "Statistics", "Logistic regression", "XGBoost"], img: D + "s_thesis.jpg", alt: "CRM thesis",
+      text: "<h4>Contents</h4><ol><li>Introduction: research background and motivation, research questions and objectives, methodology overview, thesis structure</li><li>Literature review: definition and evolution of CRM; CRM campaign types and KPIs (email, coupons); engagement and conversion theories and metrics; evaluating campaign effectiveness (t-test); predictive modelling in CRM (churn, conversion, propensity); research gap</li><li>Research methodology: data source and features; customer behaviour and campaign variables; Q1, does CRM campaign exposure significantly increase conversion? (treatment vs control, t-test, chi-square); Q2, can we predict which customers will engage or convert? (feature engineering on recency, frequency, campaign type, age; logistic regression and XGBoost; AUC, recall, precision, accuracy, F1)</li><li>Empirical analysis I: impact of CRM campaigns on conversion, by campaign type and subgroup</li><li>Empirical analysis II: predictive modelling of marketing responsiveness, feature importance, model comparison, confusion matrix and ROC/AUC, business implications</li><li>Conclusion: key findings, strategic implications for CRM practice, limitations, future research</li></ol>",
+      docs: [["defense", 17, "Oral defense"], ["thesis", 105, "Full thesis"]] },
+    { c: "design", t: "Brand Recognition: Healthcare Association Logo", d: "Redesigned the logo of a healthcare association to build brand recognition, with a full corporate identity system.", tags: ["Logo design", "Branding", "Content creation", "UI"], img: D + "s_logo1.jpg", alt: "Healthcare association logo", l: "https://drive.google.com/file/d/1FUe9ShodyKNEFjfsx7p2hMX-9-9dt_Pb/view?usp=sharing", lt: "View designs",
+      more: [[D + "s_logo2.jpg", "Logo arrangement variations"], [D + "s_logo3.jpg", "Logo design detail"]], docs: [["cis", 34, "Corporate identity system"]] },
+    { c: "design", t: "Brand Recognition: Coffee Shop Logo", d: "Designed the logo and brochure for a coffee shop, Mystery Coffee.", tags: ["Logo design", "Brochure", "Graphic design", "Digital marketing"], img: D + "s_coffee1.jpg", alt: "Coffee shop logo", l: "https://drive.google.com/file/d/1u0FWxgyQhFuus8MN62SHDMcb0yjqSxqr/view?usp=sharing", lt: "View designs",
+      more: [[D + "s_coffee2.jpg", "Coffee shop design detail"]], docs: [["coffee", 27, "Mystery Coffee brand proposal"]] },
+    { c: "design", t: "30+ Wine Flyers", d: "Graphic design for the wine sector: flyers for French wine estates and events, made for La Vie Wine & Spirits in Taipei.", tags: ["Graphic design", "Print", "Illustrator"], img: D + "s_flyers.jpg", alt: "Wine flyers", l: "https://drive.google.com/drive/folders/1wOeoSLrd16w8O2K6OLEQRUu6BJ_8dpeC?usp=sharing", lt: "More designs" }
+  ];
+  var COV = {
+    "Call Center Performance": ["KPI design &|BI reporting", "", "bars", "img/badge/cc_dash.jpg", "sq"],
+    "Power BI Sales Report": ["Sales & logistics|performance analysis", "", "donut", "img/badge/pbi_map.jpg", "ci"],
+    "Amazon Beauty Products": ["Python analysis for|marketing strategy", "", "scatter", "img/badge/amazon_badge.jpg", "ci"],
+    "Netflix Recommendation & Analysis App": ["Web scraping, APIs|& app building", "", "posters", "img/badge/netflix.jpg", "sq"],
+    "Chicago Bike Sharing (SQL)": ["Database exploration|& ER modelling", "", "map", "img/badge/mysql_badge.jpg", "ci"],
+    "GPU Spec Explorer (R)": ["Interactive app|development", "", "hbars", "img/badge/gpu.jpg", "sq"],
+    "Lead Generation Monitoring": ["Marketing ROI &|budget optimisation", "", "funnel", "img/badge/lead.jpg", "sq"],
+    "Retail Sales Analysis (DataCamp)": ["Data cleaning &|exploratory analysis", "", "line", "img/badge/datacamp.jpg", "sq"],
+    "Loan Proposal Dashboard (Excel)": ["Financial analysis|& reporting", "", "table", "img/badge/excel.jpg", "sq"],
+    "Tableau Storytelling: Airbnb NYC": ["Visual analytics|& insight", "", "bars", "img/badge/tableau.jpg", "sq"],
+    "Data Governance": ["Data policy &|compliance", "", "shield", "img/badge/gov.jpg", "ci"],
+    "Machine Learning: Customer Churn": ["Predictive modelling|& retention strategy", "", "split", "img/badge/ml.jpg", "sq"],
+    "Elis: Digital Transformation Proposal": ["Consulting &|solution pitching", "", "nodes", "img/badge/elis.jpg", "ci"],
+    "Programmatic Advertising": ["Media planning|& KPI strategy", "", "line", "img/badge/prog.jpg", "ci"],
+    "Digital Marketing in an AI World (Sonos)": ["Customer journey|& campaign design", "", "path", "img/badge/sonos.jpg", "ci"],
+    "Digital Business Model": ["Startup strategy &|value proposition", "", "triangle", "img/badge/faem.jpg", "ci"],
+    "AURA Magazine Website": ["SEO & content|strategy", "", "pages", "img/badge/aura.jpg", "sq"],
+    "CRM Digital Solution": ["Customer relationship|strategy", "", "mail", "img/badge/crm.jpg", "sq"],
+    "Thesis: Analyzing and Predicting CRM Campaign Effectiveness": ["Statistical testing &|customer analytics", "", "roc", "img/badge/thesis.jpg", "sq"],
+    "Brand Recognition: Healthcare Association Logo": ["Visual identity|system", "", "shapes", "img/badge/hlogo.jpg", "ci"],
+    "Brand Recognition: Coffee Shop Logo": ["Brand & brochure|design", "", "cup", "img/badge/coffee.jpg", "ci"],
+    "Wine Tasting Notes Explorer": ["From notes to|a live data product", "", "nodes", "img/badge/wine.jpg", "sq"],
+    "AI Job-Search Workspace": ["AI workflow|automation", "", "flow"],
+    "This Portfolio Website": ["AI-assisted web|design & build", "", "nodes", "img/badge/portfolio.jpg", "sq"],
+    "30+ Wine Flyers": ["Print & promotional|design", "", "stack", "img/badge/flyers.jpg", "sq"]
+  };
+  var PAL = { ai: ["#0f5f63", "#0b1a24", "#9ff0e4"], data: ["#2b3a8f", "#121833", "#a9b2ff"], marketing: ["#5b2c78", "#1c1230", "#e0c2ff"], design: ["#7a3b22", "#241510", "#ffcfb0"] };
+  function motif(m, c, seed) {
+    var o = [], i, r = function (k) { return ((seed * 9301 + k * 49297) % 233280) / 233280; };
+    var X = 470, W = 290, Y = 70, H = 260;
+    if (m === "bars") { for (i = 0; i < 8; i++) { var h = 60 + r(i) * 190; o.push('<rect x="' + (X + i * 36) + '" y="' + (Y + H - h) + '" width="24" height="' + h + '" rx="4" fill="' + c + '" opacity="' + (0.35 + i * 0.08) + '"/>'); } }
+    else if (m === "hbars") { for (i = 0; i < 6; i++) { var w = 80 + r(i) * 200; o.push('<rect x="' + X + '" y="' + (Y + 10 + i * 40) + '" width="' + w + '" height="24" rx="4" fill="' + c + '" opacity="' + (0.9 - i * 0.1) + '"/>'); } }
+    else if (m === "line" || m === "roc") {
+      var pts = []; for (i = 0; i <= 10; i++) { var yv = m === "roc" ? Y + H - H * Math.pow(i / 10, 0.35) : Y + H - 40 - r(i) * 140 - i * 8; pts.push((X + i * 29) + "," + yv.toFixed(1)); }
+      if (m === "roc") o.push('<line x1="' + X + '" y1="' + (Y + H) + '" x2="' + (X + W) + '" y2="' + Y + '" stroke="' + c + '" stroke-dasharray="6 6" opacity=".4" stroke-width="2"/>');
+      o.push('<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + c + '" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>');
+      o.push('<polygon points="' + X + ',' + (Y + H) + ' ' + pts.join(" ") + ' ' + (X + W) + ',' + (Y + H) + '" fill="' + c + '" opacity=".12"/>'); }
+    else if (m === "donut") { var a0 = -Math.PI / 2, parts = [0.4, 0.23, 0.2, 0.17]; for (i = 0; i < 4; i++) { var a1 = a0 + parts[i] * Math.PI * 2, R = 110, cx = 615, cy = 200; var large = parts[i] > 0.5 ? 1 : 0; o.push('<path d="M' + (cx + R * Math.cos(a0)) + ' ' + (cy + R * Math.sin(a0)) + ' A' + R + ' ' + R + ' 0 ' + large + ' 1 ' + (cx + R * Math.cos(a1)) + ' ' + (cy + R * Math.sin(a1)) + '" fill="none" stroke="' + c + '" stroke-width="38" opacity="' + (1 - i * 0.2) + '"/>'); a0 = a1 + 0.04; } }
+    else if (m === "scatter" || m === "map" || m === "split") { for (i = 0; i < 46; i++) { var px = X + r(i) * W, py = Y + r(i + 99) * H, rad = m === "map" ? 4 + r(i + 7) * 14 : 6; var fill = m === "split" ? (px > X + W / 2 ? c : "#ffffff") : c; o.push('<circle cx="' + px.toFixed(0) + '" cy="' + py.toFixed(0) + '" r="' + rad.toFixed(0) + '" fill="' + fill + '" opacity="' + (m === "map" ? 0.35 : 0.75) + '"/>'); } if (m === "split") o.push('<line x1="' + (X + W / 2) + '" y1="' + Y + '" x2="' + (X + W / 2) + '" y2="' + (Y + H) + '" stroke="' + c + '" stroke-width="3" stroke-dasharray="8 8"/>'); }
+    else if (m === "posters") { for (i = 0; i < 8; i++) o.push('<rect x="' + (X + (i % 4) * 74) + '" y="' + (Y + 10 + Math.floor(i / 4) * 128) + '" width="60" height="112" rx="6" fill="' + c + '" opacity="' + (0.25 + r(i) * 0.6) + '"/>'); }
+    else if (m === "funnel") { for (i = 0; i < 5; i++) { var w2 = W - i * 52; o.push('<rect x="' + (X + (W - w2) / 2) + '" y="' + (Y + i * 52) + '" width="' + w2 + '" height="40" rx="6" fill="' + c + '" opacity="' + (0.9 - i * 0.14) + '"/>'); } }
+    else if (m === "table") { for (i = 0; i < 7; i++) for (var j = 0; j < 4; j++) o.push('<rect x="' + (X + j * 74) + '" y="' + (Y + i * 37) + '" width="66" height="29" rx="3" fill="' + c + '" opacity="' + (i === 0 ? 0.9 : 0.15 + r(i * 4 + j) * 0.35) + '"/>'); }
+    else if (m === "shield") { o.push('<path d="M615 70 L735 115 V200 C735 270 680 315 615 335 C550 315 495 270 495 200 V115 Z" fill="' + c + '" opacity=".22" stroke="' + c + '" stroke-width="5"/><path d="M570 205 L605 240 L665 170" fill="none" stroke="' + c + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'); }
+    else if (m === "nodes") { var N = [[500, 110], [600, 80], [720, 130], [540, 230], [660, 220], [740, 300], [580, 320]]; [[0, 1], [1, 2], [0, 3], [1, 4], [2, 4], [3, 4], [4, 5], [3, 6], [6, 5]].forEach(function (e) { o.push('<line x1="' + N[e[0]][0] + '" y1="' + N[e[0]][1] + '" x2="' + N[e[1]][0] + '" y2="' + N[e[1]][1] + '" stroke="' + c + '" stroke-width="3" opacity=".5"/>'); }); N.forEach(function (n, k) { o.push('<circle cx="' + n[0] + '" cy="' + n[1] + '" r="' + (k === 4 ? 22 : 13) + '" fill="' + c + '"/>'); }); }
+    else if (m === "path") { o.push('<path d="M480 300 C540 300 540 120 610 120 S680 300 750 90" fill="none" stroke="' + c + '" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>'); [[480, 300], [610, 120], [690, 230], [750, 90]].forEach(function (n) { o.push('<circle cx="' + n[0] + '" cy="' + n[1] + '" r="16" fill="' + c + '"/>'); }); }
+    else if (m === "triangle") { o.push('<polygon points="615,70 745,320 485,320" fill="' + c + '" opacity=".16" stroke="' + c + '" stroke-width="5"/><circle cx="615" cy="225" r="26" fill="' + c + '"/>'); [[615, 70], [745, 320], [485, 320]].forEach(function (n) { o.push('<circle cx="' + n[0] + '" cy="' + n[1] + '" r="14" fill="' + c + '"/>'); }); }
+    else if (m === "pages") { for (i = 0; i < 4; i++) o.push('<rect x="' + (500 + i * 40) + '" y="' + (80 + i * 22) + '" width="150" height="200" rx="8" fill="' + c + '" opacity="' + (0.2 + i * 0.2) + '"/>'); for (i = 0; i < 5; i++) o.push('<rect x="640" y="' + (170 + i * 22) + '" width="' + (110 - r(i) * 40) + '" height="8" rx="4" fill="#ffffff" opacity=".7"/>'); }
+    else if (m === "mail") { o.push('<rect x="500" y="110" width="230" height="160" rx="14" fill="' + c + '" opacity=".22" stroke="' + c + '" stroke-width="5"/><polyline points="505,118 615,205 725,118" fill="none" stroke="' + c + '" stroke-width="5" stroke-linejoin="round"/>'); }
+    else if (m === "shapes") { o.push('<circle cx="560" cy="160" r="70" fill="' + c + '" opacity=".75"/><rect x="590" y="170" width="140" height="140" rx="22" fill="' + c + '" opacity=".35"/><polygon points="690,70 750,170 630,170" fill="' + c + '" opacity=".55"/>'); }
+    else if (m === "cup") { o.push('<path d="M520 150 H690 V250 C690 300 650 330 605 330 C560 330 520 300 520 250 Z" fill="' + c + '" opacity=".35" stroke="' + c + '" stroke-width="5"/><path d="M690 175 C745 175 745 255 690 255" fill="none" stroke="' + c + '" stroke-width="10"/><path d="M570 120 C560 100 590 90 580 70 M625 120 C615 100 645 90 635 70" fill="none" stroke="' + c + '" stroke-width="5" stroke-linecap="round" opacity=".7"/>'); }
+    else if (m === "flow") { ["Find", "Evaluate", "Write", "Check", "Prepare"].forEach(function (w, k) { var y = 60 + k * 60; o.push('<rect x="520" y="' + y + '" width="210" height="44" rx="22" fill="' + c + '" opacity="' + (0.9 - k * 0.12) + '"/><text x="625" y="' + (y + 29) + '" text-anchor="middle" font-family="Fira Sans, Arial, sans-serif" font-weight="700" font-size="20" fill="#0b1a24">' + w + '</text>'); if (k < 4) o.push('<line x1="625" y1="' + (y + 44) + '" x2="625" y2="' + (y + 60) + '" stroke="' + c + '" stroke-width="3"/>'); }); }
+    else if (m === "stack") { for (i = 0; i < 5; i++) o.push('<rect x="' + (500 + i * 24) + '" y="' + (70 + i * 18) + '" width="140" height="190" rx="6" fill="' + c + '" opacity="' + (0.18 + i * 0.16) + '" transform="rotate(' + (-8 + i * 4) + ' ' + (570 + i * 24) + ' ' + (165 + i * 18) + ')"/>'); }
+    return o.join("");
+  }
+  function badge(src, shape, idx, c) {
+    var clip = shape === "ci" ? '<circle cx="625" cy="200" r="128"/>' : '<rect x="497" y="72" width="256" height="256" rx="30"/>';
+    var ring = shape === "ci" ? '<circle cx="625" cy="200" r="128" fill="none" stroke="#ffffff" stroke-width="7"/><circle cx="625" cy="200" r="142" fill="none" stroke="' + c + '" stroke-width="2" opacity=".6"/>' : '<rect x="497" y="72" width="256" height="256" rx="30" fill="none" stroke="#ffffff" stroke-width="7"/><rect x="483" y="58" width="284" height="284" rx="40" fill="none" stroke="' + c + '" stroke-width="2" opacity=".6"/>';
+    return '<defs><clipPath id="b' + idx + '">' + clip + '</clipPath><filter id="s' + idx + '" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity=".45"/></filter></defs>' +
+      '<g filter="url(#s' + idx + ')">' + clip.replace('/>', ' fill="#ffffff"/>') + '</g>' +
+      '<image href="' + src + '" x="497" y="72" width="256" height="256" preserveAspectRatio="xMidYMid slice" clip-path="url(#b' + idx + ')"/>' + ring;
+  }
+  function headline(h, c) {
+    var lines = h.split("|"), y0 = 200 - (lines.length - 1) * 24;
+    return '<text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="40" fill="#ffffff" letter-spacing="-1">' +
+      lines.map(function (l, k) { return '<tspan x="44" y="' + (y0 + k * 48) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' +
+      '<rect x="46" y="' + (y0 + lines.length * 48 - 18) + '" width="56" height="5" rx="2.5" fill="' + c + '"/>';
+  }
+  function coverSVG(p, idx) {
+    var cv = COV[p.t] || [p.tags[0], "", "bars"], pal = PAL[p.c];
+    return '<svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + esc(cv[0].replace("|", " ")) + '">' +
+      '<defs><linearGradient id="g' + idx + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + pal[0] + '"/><stop offset="1" stop-color="' + pal[1] + '"/></linearGradient></defs>' +
+      '<rect width="800" height="400" fill="url(#g' + idx + ')"/>' + (cv[3] ? '<g opacity=".25">' + motif(cv[2], pal[2], idx + 3) + '</g>' + badge(cv[3], cv[4], idx, pal[2]) : motif(cv[2], pal[2], idx + 3)) +
+      headline(cv[0], pal[2]) + '</svg>';
+  }
+  var aiProjects = [
+    { c: "ai", t: "Wine Tasting Notes Explorer", d: "My wine tasting notes, kept for years in Apple Notes, turned into a searchable website with Meta Muse, an AI agent. 986 wines tasted from 2019 to 2026, each with my tasting note, the occasion and a Wine-Searcher average price.", tags: ["Meta Muse (AI agent)", "Data structuring", "GitHub Pages"], img: "img/wine-1.jpg", alt: "Wine tasting notes website: search by wine, place and people, and region; 986 wines", l: "https://yichieh-web.github.io/my-wine-tasting-notes-2019-2026/", lt: "Open the site",
+      text: "<h4>Before: a plain Apple Note</h4><p>One long note per year, each wine written as free text: a name typed quickly (often misspelled), then a line of tasting impressions. No structure, no search, no prices.</p><h4>After: a searchable wine database</h4><p>Example: the note line <em>2013 pommard rugiens les rugiens bas 2013</em> became <em>Henri Boillot Pommard 1er Cru Les Rugiens-Bas 2013</em>, numbered 2026 #1, with its tasting note and a Wine-Searcher average price of US$88.</p><h4>What the AI build did</h4><ul><li>Took unstructured notes from Apple Notes and structured them into one record per wine: year and number, wine name, tasting note, occasion and people</li><li>Built a website with three searches: wine name, place and people, and region</li><li>Added the Wine-Searcher international average price for each wine where available</li><li>Published it as a live site on GitHub Pages for personal use</li></ul>" }
+,
+    { c: "ai", t: "AI Job-Search Workspace", d: "An AI workflow in Claude Code that runs my job search end to end: finding postings, scoring my fit, and drafting a tailored CV and cover letter for each application.", tags: ["Claude Code", "Python", "python-docx", "Automation"], img: "", alt: "",
+      text: "<h4>What it does</h4><ul><li><b>Find:</b> job-board scrapers (LinkedIn and others), plus a portal I added for APEC, the French executive job board</li><li><b>Evaluate:</b> scores each posting against my profile on skills, experience and work-authorisation eligibility before anything is written</li><li><b>Write:</b> generates a tailored CV and cover letter as Word files with Python (python-docx) build scripts, one per application</li><li><b>Check:</b> every document is verified against one candidate profile (single source of truth), with fact checks and an ATS keyword scan</li><li><b>Prepare:</b> interview talking points for each role</li></ul><p>Built on the open-source ai-job-search framework for Claude Code, then set up and customised for my profile and markets.</p>" },
+    { c: "ai", t: "This Portfolio Website", d: "Rebuilt from my Notion portfolio with Claude Code: every project page read through the Notion connector, 19 PDFs converted page by page, and each cover generated from the project's own visuals.", tags: ["Claude Code", "UI UX Pro Max", "Impeccable", "Notion"], img: "", alt: "",
+      text: "<h4>How it was built</h4><ul><li>Content pulled straight from 21 Notion project pages, so every text, screenshot and PDF is on the site</li><li>About 400 PDF pages converted to images and grouped under each project</li><li>Colour palette and type chosen with the UI UX Pro Max design skill; layout polished with Impeccable's design rules</li><li>One cover template written in code, then filled with a real crop from each project: dashboards, maps, logos</li><li>Iterated in conversation, section by section, from my own feedback</li></ul>" }
+  ];
+  var SRC = { work: "Work", freelance: "Freelance", academic: "Academic project", personal: "Personal" };
+  var SRC_OF = {
+    "30+ Wine Flyers": "work",
+    "Power BI Sales Report": "academic", "Retail Sales Analysis (DataCamp)": "academic",
+    "Brand Recognition: Healthcare Association Logo": "freelance", "Brand Recognition: Coffee Shop Logo": "freelance",
+    "Call Center Performance": "academic", "Amazon Beauty Products": "academic", "Netflix Recommendation & Analysis App": "academic",
+    "Chicago Bike Sharing (SQL)": "academic", "GPU Spec Explorer (R)": "academic", "Lead Generation Monitoring": "academic",
+    "Loan Proposal Dashboard (Excel)": "academic", "Tableau Storytelling: Airbnb NYC": "academic", "Data Governance": "academic",
+    "Machine Learning: Customer Churn": "academic", "Elis: Digital Transformation Proposal": "academic", "Programmatic Advertising": "academic",
+    "Digital Marketing in an AI World (Sonos)": "academic", "Digital Business Model": "academic", "AURA Magazine Website": "academic",
+    "CRM Digital Solution": "academic", "Thesis: Analyzing and Predicting CRM Campaign Effectiveness": "academic",
+    "Wine Tasting Notes Explorer": "personal", "AI Job-Search Workspace": "personal", "This Portfolio Website": "personal"
+  };
+  var label = { data: "Data", marketing: "Marketing", design: "Design", ai: "Applied AI" };
+  function esc(s) { return s.replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
+  var sqlCode = document.getElementById("sql-code").textContent;
+  var grid = document.getElementById("grid");
+  function cardHTML(p, i) {
+    var extra = (p.img ? '<img src="' + p.img + '" alt="' + esc(p.alt) + '" loading="lazy">' : "") + (p.text || "") +
+      (p.sql ? '<h4>SQL code</h4><pre class="code">' + esc(sqlCode) + '</pre>' : "") +
+      (p.more ? p.more.map(function (m) { return '<img src="' + m[0] + '" alt="' + esc(m[1]) + '" loading="lazy">'; }).join("") : "") +
+      (p.docs ? p.docs.map(function (d) { return docHTML(d[0], d[1], d[2]); }).join("") : "");
+    return '<article class="card" data-cat="' + p.c + '">' +
+      '<div class="cover gen">' + coverSVG(p, i) + '<span class="cat">' + label[p.c] + '</span></div>' +
+      (SRC_OF[p.t] ? '<span class="src ' + SRC_OF[p.t] + '">' + SRC[SRC_OF[p.t]] + '</span>' : '') +
+      '<h3>' + esc(p.t) + '</h3><p>' + esc(p.d) + '</p>' +
+      '<ul class="tags">' + p.tags.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>' +
+      (extra ? '<details><summary>Read more <svg class="ico"><use href="#i-plus"/></svg></summary><div class="more">' + extra + '</div></details>' : '') +
+      (p.l ? '<div class="act"><a href="' + p.l + '" target="_blank" rel="noopener">' + esc(p.lt) + ' <svg class="ico"><use href="#i-ext"/></svg></a></div>' : '') +
+      '</article>';
+  }
+  grid.innerHTML = projects.map(cardHTML).join("");
+  var aiGrid = document.getElementById("ai-grid");
+  if (aiGrid) aiGrid.innerHTML = aiProjects.map(function (p, i) { return cardHTML(p, 100 + i); }).join("");
+  var counts = { all: projects.length, data: 0, marketing: 0, design: 0 };
+  projects.forEach(function (p) { counts[p.c]++; });
+  var buttons = document.querySelectorAll(".filter");
+  buttons.forEach(function (b) {
+    var n = b.querySelector(".n"); if (n) n.textContent = counts[b.getAttribute("data-f")];
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-f");
+      buttons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      grid.querySelectorAll(".card").forEach(function (c) { c.hidden = !(f === "all" || c.getAttribute("data-cat") === f); });
+    });
+  });
+  document.getElementById("copy-email").addEventListener("click", function () {
+    var lbl = this.querySelector("span"), el = document.getElementById("email");
+    function done(m) { lbl.textContent = m; setTimeout(function () { lbl.textContent = "Copy email"; }, 1600); }
+    function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done("Selected"); }
+    try { navigator.clipboard.writeText(el.textContent).then(function () { done("Copied"); }, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
