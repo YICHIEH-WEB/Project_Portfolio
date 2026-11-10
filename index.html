@@ -175,6 +175,25 @@ pre.code { max-height: 420px; overflow: auto; background: #0a0f1c; border: 1px s
 .contact p { color: var(--ink-2); margin: 12px auto 24px; max-width: 52ch; }
 .contact .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
 .email { font-family: var(--mono); font-size: 14.5px; padding: 10px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); word-break: break-all; }
+#case { position: fixed; inset: 0; z-index: 60; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+#case[hidden] { display: none; }
+.case-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px)); background: rgba(11,16,32,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.case-close { font: 600 14px var(--sans); color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; }
+.case-close:hover { border-color: #3d4a6b; }
+.case-body { max-width: 980px; margin: 0 auto; padding: 32px max(20px, env(safe-area-inset-right, 0px)) 96px max(20px, env(safe-area-inset-left, 0px)); }
+.case-body .src { margin: 0 0 12px; }
+.case-title { font-size: clamp(30px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 6px 0 10px; text-wrap: balance; }
+.case-body .meta { display: block; margin: 0 0 18px; font-size: 14.5px; color: var(--a-ink); }
+.case-desc { font-size: 18px; line-height: 1.6; color: var(--ink-2); margin: 0 0 18px; max-width: 70ch; }
+.case-body .act { padding: 0 0 26px; }
+.case-body .act a { font-size: 15px; font-weight: 600; color: var(--a-ink); text-decoration: none; }
+.case-body .act a:hover { text-decoration: underline; }
+.case-more { border-top: 1px solid var(--line); padding-top: 22px; }
+.case-more p, .case-more li { color: var(--ink-2); font-size: 16px; line-height: 1.6; }
+.case-more h4 { font-size: 18px; margin: 26px 0 8px; color: var(--ink); }
+.case-more img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); margin: 10px 0 18px; }
+.case-more .doc { margin-top: 18px; }
+.case-more .doc img { margin-top: 10px; }
 footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-align: center; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fcard, .card, .btn, .thumb img { transition: none; } .fcard:hover, .card:hover, .btn:hover, .fcard:hover .thumb img { transform: none; } }
@@ -878,6 +897,39 @@ ORDER BY
     function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done("Selected"); }
     try { navigator.clipboard.writeText(el.textContent).then(function () { done("Copied"); }, fallback); } catch (e) { fallback(); }
   });
+  var overlay = document.createElement("div");
+  overlay.id = "case";
+  overlay.hidden = true;
+  overlay.innerHTML = '<div class="case-bar"><span class="eyebrow">Project</span><button class="case-close" type="button">Close ✕</button></div><article class="case-body"></article>';
+  document.body.appendChild(overlay);
+  var caseBody = overlay.querySelector(".case-body");
+  function getDetails(c) { return c.querySelector(":scope > details") || c.querySelector(":scope > .fbody > details"); }
+  var cases = Array.prototype.slice.call(document.querySelectorAll(".card, .fcard")).filter(function (c) { return getDetails(c); });
+  function openCase(idx, push) {
+    var card = cases[idx]; if (!card) return;
+    var more = getDetails(card).querySelector(".more");
+    var h = card.querySelector("h3"), src = card.querySelector(".src"), meta = card.querySelector(".meta");
+    var desc = card.querySelector(":scope > p") || card.querySelector(":scope > .fbody > p");
+    var act = card.querySelector(".act");
+    caseBody.innerHTML = (src ? src.outerHTML : "") + '<h1 class="case-title">' + (h ? h.innerHTML : "") + '</h1>' + (meta ? meta.outerHTML : "") + (desc ? '<p class="case-desc">' + desc.innerHTML + '</p>' : "") + (act ? act.outerHTML : "") + '<div class="more case-more">' + (more ? more.innerHTML : "") + '</div>';
+    overlay.hidden = false; document.body.style.overflow = "hidden"; overlay.scrollTop = 0;
+    if (push !== false) history.replaceState(null, "", "#case-" + idx);
+  }
+  function closeCase() {
+    overlay.hidden = true; document.body.style.overflow = "";
+    if (location.hash.indexOf("#case-") === 0) history.replaceState(null, "", location.pathname + location.search);
+  }
+  cases.forEach(function (card, idx) {
+    getDetails(card).querySelector("summary").addEventListener("click", function (e) { e.preventDefault(); openCase(idx); });
+  });
+  overlay.querySelector(".case-close").addEventListener("click", closeCase);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !overlay.hidden) closeCase(); });
+  window.addEventListener("hashchange", function () {
+    var m = location.hash.match(/^#case-(\d+)$/);
+    if (m && cases[+m[1]]) openCase(+m[1], false); else if (!overlay.hidden) closeCase();
+  });
+  var m0 = location.hash.match(/^#case-(\d+)$/);
+  if (m0 && cases[+m0[1]]) openCase(+m0[1], false);
 })();
 </script>
 
