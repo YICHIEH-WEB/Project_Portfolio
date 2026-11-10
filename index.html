@@ -61,7 +61,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
 .hero { position: relative; padding-block: 80px 64px; text-align: center; overflow: hidden; }
 .hero::before { content: ""; position: absolute; left: 50%; top: -260px; width: 900px; height: 620px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(123,131,255,0.20), transparent 72%); pointer-events: none; }
 .hero .wrap { position: relative; }
-.avatar { display: block; width: 132px; height: 132px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; padding: 4px; background: linear-gradient(135deg, var(--a), var(--b)); box-shadow: 0 12px 32px -12px rgba(123,131,255,0.7); }
+.avatar { display: block; width: 132px; height: 132px; border-radius: 50%; object-fit: cover; margin: 28px auto 0; padding: 4px; background: linear-gradient(135deg, var(--a), var(--b)); box-shadow: 0 12px 32px -12px rgba(123,131,255,0.7); }
 @media (max-width: 600px) { .avatar { width: 108px; height: 108px; } }
 .status { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1.45; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 8px 16px; max-width: 100%; text-align: left; }
 .status i { flex: none; }
@@ -203,7 +203,6 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <img class="avatar" src="img/photo.jpg" alt="Portrait of Yi-Chieh LEE" width="132" height="132">
       <span class="status"><i></i><span><b>Open to roles in:</b> Account Management · Data Analysis · Marketing Analytics</span></span>
       <h1>Fluent in business, data<br>and <span class="hl">three languages.</span></h1>
       <p>MSc in Data Science and Digital Marketing, EMLYON Business School.<br>Experience in digital marketing, marketing &amp; data analysis, data governance and dashboarding data pipeline. Also in technology industry B2B account management (cloud &amp; servers, B2B software).</p>
@@ -212,6 +211,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
         <a class="btn ghost" href="https://www.linkedin.com/in/yichiehlee1234/" target="_blank" rel="noopener">LinkedIn <svg class="ico"><use href="#i-ext"/></svg></a>
       </div>
       <p class="langs">Languages: Français · English · 中文</p>
+      <img class="avatar" src="img/photo.jpg" alt="Portrait of Yi-Chieh LEE" width="132" height="132">
     </div>
   </section>
 
