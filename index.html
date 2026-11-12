@@ -124,6 +124,12 @@ details .more img + img { margin-top: 10px; }
 .more-wrap { display: flex; justify-content: center; margin-top: 28px; }
 .more-wrap[hidden] { display: none; }
 .card[hidden] { display: none; }
+.fcard[hidden], .sec[hidden] { display: none; }
+.skills { padding-block: 8px 24px; }
+.skills .sec-head { margin-bottom: 22px; }
+.skills .sec-head h2 { font-size: clamp(24px, 3vw, 32px); }
+.skills .filters { margin-bottom: 12px; }
+.skill-status { text-align: center; color: var(--ink-2); font-size: 14px; margin: 0; }
 .filter[aria-pressed="true"] { color: #fff; background: linear-gradient(100deg, rgba(123,131,255,0.28), rgba(169,112,255,0.28)); border-color: #6b6fe0; }
 .grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -225,15 +231,25 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <span class="status"><i></i><span><b>Open to roles in:</b> Account Management · Data Analysis · Marketing Analytics</span></span>
       <h1>Fluent in business, data<br>and <span class="hl">three languages.</span></h1>
-      <p>MSc in Data Science and Digital Marketing, EMLYON Business School.<br>Data and marketing analyst: SQL, Power BI and Looker dashboards, plus data governance at L'Oréal Paris headquarters.<br>B2B account management in tech (Gigabyte, 2022–2023): cloud, servers and B2B software.</p>
+      <p>MSc in Data Science and Digital Marketing, EMLYON Business School.<br>Data and marketing analyst: SQL, Power BI and Looker dashboards, plus CRM and data project owner at L'Oréal Paris headquarters.<br>B2B account management in tech (Gigabyte, 2022–2023): cloud, servers.</p>
       <div class="cta">
         <a class="btn" href="#featured">See hands-on cases <svg class="ico"><use href="#i-down"/></svg></a>
         <a class="btn ghost" href="https://www.linkedin.com/in/yichiehlee1234/" target="_blank" rel="noopener">LinkedIn <svg class="ico"><use href="#i-ext"/></svg></a>
       </div>
       <p class="langs">Languages: Français · English · 中文</p>
       <img class="avatar" src="img/photo.jpg" alt="Portrait of Yi-Chieh LEE" width="132" height="132">
+    </div>
+  </section>
+
+  <section class="sec skills" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Skills</h2>
+        <p>Pick a skill to see the cases that use it.</p>
+      </div>
+      <div class="filters" id="skill-filters" role="group" aria-label="Filter cases by skill"></div>
+      <p class="skill-status" id="skill-status" hidden></p>
     </div>
   </section>
 
@@ -245,7 +261,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
       </div>
       <div class="featured">
 
-        <article class="fcard">
+        <article class="fcard" data-cats="data marketing">
           <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Marketing advertising data analysis"><defs><linearGradient id="fg0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc0"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs0" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg0)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs0)"/><image href="img/lbc-1.jpg" x="345" y="38" width="425" height="324" preserveAspectRatio="xMidYMid slice" clip-path="url(#fc0)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="170">Marketing</tspan><tspan x="34" y="216">advertising</tspan><tspan x="34" y="262">data analysis</tspan></text><rect x="36" y="280" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">Leboncoin</span></div>
           <div class="fbody">
             <span class="src work">Work</span>
@@ -290,7 +306,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
             </details>
           </div>
         </article>
-        <article class="fcard">
+        <article class="fcard" data-cats="data">
           <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Data governance and product ownership"><defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc1"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs1" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg1)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs1)"/><image href="img/bmr-2.jpg" x="345" y="38" width="425" height="324" preserveAspectRatio="xMidYMid slice" clip-path="url(#fc1)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="152">Data governance</tspan><tspan x="34" y="200">&amp; product</tspan><tspan x="34" y="248">ownership</tspan></text><rect x="36" y="278" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">L'Oréal</span></div>
           <div class="fbody">
             <span class="src work">Work</span>
@@ -315,7 +331,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
           </div>
         </article>
 
-        <article class="fcard">
+        <article class="fcard" data-cats="data">
           <div class="thumb gen"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Market analysis and data storytelling"><defs><linearGradient id="fg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a8f"/><stop offset="1" stop-color="#121833"/></linearGradient><clipPath id="fc2"><rect x="345" y="38" width="425" height="324" rx="24"/></clipPath><filter id="fs2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter></defs><rect width="800" height="400" fill="url(#fg2)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="#ffffff" filter="url(#fs2)"/><image href="img/abnb-cover.jpg" x="345" y="38" width="425" height="324" preserveAspectRatio="xMidYMid slice" clip-path="url(#fc2)"/><rect x="345" y="38" width="425" height="324" rx="24" fill="none" stroke="#ffffff" stroke-width="6"/><rect x="331" y="24" width="453" height="352" rx="34" fill="none" stroke="#a9b2ff" stroke-width="2" opacity=".55"/><image href="img/badge/airbnb_logo.png" x="36" y="300" height="38" width="130" preserveAspectRatio="xMinYMid meet"/><text font-family="Fira Sans, Arial, sans-serif" font-weight="800" font-size="34" fill="#ffffff" letter-spacing="-.5"><tspan x="34" y="152">Market analysis</tspan><tspan x="34" y="200">&amp; data</tspan><tspan x="34" y="248">storytelling</tspan></text><rect x="36" y="278" width="56" height="5" rx="2.5" fill="#a9b2ff"/></svg><span class="badge">Airbnb NYC</span></div>
           <div class="fbody">
             <span class="src academic">Academic project</span>
@@ -904,18 +920,71 @@ ORDER BY
   /* Only the first FIRST cards show under "All" until "More projects" is pressed; a category filter always shows every match. */
   var FIRST = 12, curFilter = "all", expanded = false;
   var moreBtn = document.getElementById("more-projects");
+  var curSkill = "";
+  /* Broad skill groups: each takes cards by their existing category and/or by tags already on the card. */
+  var GROUP_DEF = {
+    "Power BI & Dashboards": { tags: ["Power BI", "Looker Studio", "Tableau", "Dashboard", "Power Query", "DAX", "Advanced Excel", "Sales analysis"] },
+    "SQL & Databases": { tags: ["SQL", "BigQuery", "GCP", "ER model", "Hackolade"] },
+    "Python & R": { tags: ["Python", "pandas", "NumPy", "Seaborn", "BeautifulSoup", "R", "Streamlit", "Plotly", "Shiny"] },
+    "Statistics & ML": { tags: ["Statistics", "Machine learning", "Classification", "Random Forest", "Logistic regression", "XGBoost", "EDA"] },
+    "AI & Automation": { cats: ["ai"], tags: ["Automation", "Claude Code", "Meta Muse (AI agent)"] },
+    "CRM & Digital marketing": { cats: ["marketing"], tags: ["CRM", "Digital marketing", "Programmatic", "Campaign", "SEO", "Lead generation", "Customer journey", "Media strategy", "ROI", "Content"] },
+    "Governance & Strategy": { tags: ["Governance", "GDPR", "Data security", "Consulting", "Digital transformation", "Pitch", "Business model", "Value proposition"] },
+    "Design & Branding": { cats: ["design"], tags: ["Graphic design", "Branding", "Logo design"] }
+  };
+  function tagsOf(el) { return Array.prototype.map.call(el.querySelectorAll(".tags li"), function (li) { return li.textContent.trim(); }); }
+  function matchSkill(el, k) {
+    if (!k) return true;
+    var g = GROUP_DEF[k]; if (!g) return false;
+    var cats = (el.getAttribute("data-cats") || el.getAttribute("data-cat") || "").split(" ");
+    if ((g.cats || []).some(function (c) { return cats.indexOf(c) > -1; })) return true;
+    return tagsOf(el).some(function (t) { return g.tags.indexOf(t) > -1; });
+  }
+  function hasSkill(el) { return matchSkill(el, curSkill); }
   function applyCards() {
+    var skillOn = curSkill !== "";
     grid.querySelectorAll(".card").forEach(function (c, i) {
-      var match = curFilter === "all" || c.getAttribute("data-cat") === curFilter;
-      c.hidden = !match || (curFilter === "all" && !expanded && i >= FIRST);
+      var match = (curFilter === "all" || c.getAttribute("data-cat") === curFilter) && hasSkill(c);
+      c.hidden = !match || (curFilter === "all" && !skillOn && !expanded && i >= FIRST);
+    });
+    document.querySelectorAll(".fcard, #ai-grid .card").forEach(function (c) { c.hidden = !hasSkill(c); });
+    ["featured", "applied-ai"].forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) sec.hidden = skillOn && !sec.querySelector(".fcard:not([hidden]), .card:not([hidden])");
     });
     if (!moreBtn) return;
     var rest = projects.length - FIRST;
-    moreBtn.parentNode.hidden = curFilter !== "all" || rest <= 0;
+    moreBtn.parentNode.hidden = curFilter !== "all" || skillOn || rest <= 0;
     moreBtn.textContent = expanded ? "Show fewer projects" : "More projects (" + rest + ")";
     moreBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
   }
   if (moreBtn) moreBtn.addEventListener("click", function () { expanded = !expanded; applyCards(); });
+  /* Skill bar: broad groups built from categories and tags that already sit on the case cards; nothing is added to the cards. */
+  var SKILLS = Object.keys(GROUP_DEF);
+  var skillBox = document.getElementById("skill-filters"), skillMsg = document.getElementById("skill-status");
+  function skillCount(k) {
+    var n = 0;
+    document.querySelectorAll(".fcard, #ai-grid .card, #grid .card").forEach(function (c) { if (matchSkill(c, k)) n++; });
+    return n;
+  }
+  if (skillBox) {
+    skillBox.innerHTML = '<button class="filter" type="button" data-s="" aria-pressed="true">All</button>' + SKILLS.map(function (k) {
+      return '<button class="filter" type="button" data-s="' + esc(k) + '" aria-pressed="false">' + esc(k) + '<span class="n num">' + skillCount(k) + '</span></button>';
+    }).join("");
+    var skillBtns = skillBox.querySelectorAll(".filter");
+    skillBtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = b.getAttribute("data-s");
+        curSkill = (k === curSkill) ? "" : k;
+        skillBtns.forEach(function (x) { x.setAttribute("aria-pressed", x.getAttribute("data-s") === curSkill ? "true" : "false"); });
+        applyCards();
+        if (skillMsg) {
+          skillMsg.hidden = !curSkill;
+          if (curSkill) var n = skillCount(curSkill); skillMsg.textContent = n + (n === 1 ? " case uses " : " cases use ") + curSkill + ".";
+        }
+      });
+    });
+  }
   applyCards();
   document.getElementById("copy-email").addEventListener("click", function () {
     var lbl = this.querySelector("span"), el = document.getElementById("email");
@@ -958,6 +1027,5 @@ ORDER BY
   if (m0 && cases[+m0[1]]) openCase(+m0[1], false);
 })();
 </script>
-
 </body>
 </html>
