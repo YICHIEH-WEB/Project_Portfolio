@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="Helvetica,Arial,sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#121833"/><stop offset="1" stop-color="#0b1020"/></linearGradient>
+<marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#a9b2ff" stroke-width="2"/></marker></defs>
+<rect width="1200" height="640" fill="url(#bg)"/>
+<text x="600.0" y="62" text-anchor="middle" font-size="32" font-weight="700" fill="#e4e6ff">From job posting to application, in five steps</text>
+<text x="600.0" y="98" text-anchor="middle" font-size="19" fill="#a9b2ff">An AI assistant in Claude Code does the legwork. I make the decisions.</text>
+<rect x="50.0" y="140" width="196" height="305" rx="18" fill="rgba(123,131,255,.14)" stroke="#7b83ff" stroke-width="1.5"/>
+<circle cx="86.0" cy="182" r="18" fill="#7b83ff"/><text x="86.0" y="189" text-anchor="middle" font-size="20" font-weight="700" fill="#0b1020">1</text>
+<text x="148.0" y="252" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">Find</text>
+<text x="148.0" y="290" text-anchor="middle" font-size="17" fill="#d6d9ff">Searches job boards</text>
+<text x="148.0" y="314" text-anchor="middle" font-size="17" fill="#d6d9ff">for new postings</text>
+<line x1="70.0" y1="362" x2="226.0" y2="362" stroke="rgba(169,178,255,.35)"/>
+<text x="148.0" y="382" text-anchor="middle" font-size="12" fill="#a9b2ff" letter-spacing="1">SKILL</text>
+<text x="148.0" y="402" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">/scrape</text>
+<line x1="250.0" y1="245" x2="272.0" y2="245" stroke="#a9b2ff" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="276.0" y="140" width="196" height="305" rx="18" fill="rgba(123,131,255,.14)" stroke="#7b83ff" stroke-width="1.5"/>
+<circle cx="312.0" cy="182" r="18" fill="#7b83ff"/><text x="312.0" y="189" text-anchor="middle" font-size="20" font-weight="700" fill="#0b1020">2</text>
+<text x="374.0" y="252" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">Filter</text>
+<text x="374.0" y="290" text-anchor="middle" font-size="17" fill="#d6d9ff">Drops duplicates,</text>
+<text x="374.0" y="314" text-anchor="middle" font-size="17" fill="#d6d9ff">keeps the best matches</text>
+<line x1="296.0" y1="362" x2="452.0" y2="362" stroke="rgba(169,178,255,.35)"/>
+<text x="374.0" y="382" text-anchor="middle" font-size="12" fill="#a9b2ff" letter-spacing="1">SKILL</text>
+<text x="374.0" y="402" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">/rank</text>
+<line x1="476.0" y1="245" x2="498.0" y2="245" stroke="#a9b2ff" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="502.0" y="140" width="196" height="305" rx="18" fill="rgba(123,131,255,.14)" stroke="#7b83ff" stroke-width="1.5"/>
+<circle cx="538.0" cy="182" r="18" fill="#7b83ff"/><text x="538.0" y="189" text-anchor="middle" font-size="20" font-weight="700" fill="#0b1020">3</text>
+<text x="600.0" y="252" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">Evaluate</text>
+<text x="600.0" y="290" text-anchor="middle" font-size="17" fill="#d6d9ff">Scores each job</text>
+<text x="600.0" y="314" text-anchor="middle" font-size="17" fill="#d6d9ff">against my profile</text>
+<line x1="522.0" y1="362" x2="678.0" y2="362" stroke="rgba(169,178,255,.35)"/>
+<text x="600.0" y="382" text-anchor="middle" font-size="12" fill="#a9b2ff" letter-spacing="1">SKILL</text>
+<text x="600.0" y="402" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">job-application-</text>
+<text x="600.0" y="422" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">assistant</text>
+<line x1="702.0" y1="245" x2="724.0" y2="245" stroke="#a9b2ff" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="728.0" y="140" width="196" height="305" rx="18" fill="rgba(123,131,255,.14)" stroke="#9ff0e4" stroke-width="3"/>
+<circle cx="764.0" cy="182" r="18" fill="#9ff0e4"/><text x="764.0" y="189" text-anchor="middle" font-size="20" font-weight="700" fill="#0b1020">4</text>
+<text x="826.0" y="252" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">Check</text>
+<text x="826.0" y="290" text-anchor="middle" font-size="17" fill="#d6d9ff">Checks every claim in</text>
+<text x="826.0" y="314" text-anchor="middle" font-size="17" fill="#d6d9ff">my CV against my</text>
+<text x="826.0" y="338" text-anchor="middle" font-size="17" fill="#d6d9ff">real record</text>
+<line x1="748.0" y1="362" x2="904.0" y2="362" stroke="rgba(169,178,255,.35)"/>
+<text x="826.0" y="382" text-anchor="middle" font-size="12" fill="#a9b2ff" letter-spacing="1">SKILL</text>
+<text x="826.0" y="402" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">/apply</text>
+<text x="826.0" y="422" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">/cv-healthcheck</text>
+<line x1="928.0" y1="245" x2="950.0" y2="245" stroke="#a9b2ff" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="954.0" y="140" width="196" height="305" rx="18" fill="rgba(123,131,255,.14)" stroke="#7b83ff" stroke-width="1.5"/>
+<circle cx="990.0" cy="182" r="18" fill="#7b83ff"/><text x="990.0" y="189" text-anchor="middle" font-size="20" font-weight="700" fill="#0b1020">5</text>
+<text x="1052.0" y="252" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">Prepare</text>
+<text x="1052.0" y="290" text-anchor="middle" font-size="17" fill="#d6d9ff">Drafts interview</text>
+<text x="1052.0" y="314" text-anchor="middle" font-size="17" fill="#d6d9ff">questions and answers</text>
+<line x1="974.0" y1="362" x2="1130.0" y2="362" stroke="rgba(169,178,255,.35)"/>
+<text x="1052.0" y="382" text-anchor="middle" font-size="12" fill="#a9b2ff" letter-spacing="1">SKILL</text>
+<text x="1052.0" y="402" text-anchor="middle" font-size="16" font-family="Menlo,Consolas,monospace" font-weight="700" fill="#c9ccff">/interview</text>
+<rect x="50.0" y="505" width="1100" height="95" rx="16" fill="rgba(159,240,228,.12)" stroke="#9ff0e4" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="600.0" y="545" text-anchor="middle" font-size="24" font-weight="700" fill="#9ff0e4">My verified record: the only source the AI may use</text>
+<text x="600.0" y="575" text-anchor="middle" font-size="18" fill="#d6d9ff">So it cannot invent experience I do not have</text>
+<line x1="600.0" y1="505" x2="600.0" y2="445" stroke="#9ff0e4" stroke-width="2" stroke-dasharray="5 5"/>
+<line x1="826.0" y1="505" x2="826.0" y2="445" stroke="#9ff0e4" stroke-width="2" stroke-dasharray="5 5"/>
+</svg>
