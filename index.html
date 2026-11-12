@@ -173,6 +173,13 @@ details.pdf summary .ico { margin-left: auto; }
 .src.work, .src.freelance { color: #7fe3b4; border-color: #2c6b52; background: rgba(60,207,142,.10); }
 .src.personal { color: #9ff0e4; border-color: #2a6b6b; background: rgba(60,200,200,.08); }
 .src.academic { color: #e4e6ff; border-color: #7b83ff; background: rgba(123,131,255,.30); font-size: 13px; font-weight: 700; }
+.certs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .certs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .certs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.certs li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.certs b { font-size: 16px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.certs span { font-size: 14px; color: var(--ink-2); }
+.certs time { font-family: var(--mono); font-size: 13px; color: var(--a-ink); margin-top: 4px; }
 .doc { margin-top: 14px; }
 .doc h4, .more h4 { margin: 14px 0 6px; font-size: 14px; font-weight: 700; color: var(--ink); }
 .doc img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); display: block; margin-top: 8px; }
@@ -392,6 +399,26 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
       </div>
       <div class="grid" id="grid"></div>
       <div class="more-wrap"><button type="button" class="btn ghost" id="more-projects" aria-expanded="false"></button></div>
+    </div>
+  </section>
+
+  <section class="sec" id="certifications">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Certifications</h2>
+      </div>
+      <ul class="certs">
+          <li><b>Google AI-Powered Performance Ads Certification</b><span>Google</span><time>Oct 2026</time></li>
+          <li><b>Google Ads Measurement Certification</b><span>Google</span><time>Oct 2026</time></li>
+          <li><b>Data Analyst Associate</b><span>DataCamp</span><time>Sep 2025</time></li>
+          <li><b>Power BI Essential Training</b><span>Certificate of completion · LinkedIn</span><time>Feb 2025</time></li>
+          <li><b>French DALF C1</b><span>Ministère de l'Éducation nationale</span><time>May 2018</time></li>
+          <li><b>LVMH Certificate</b><span>LVMH</span><time>Jul 2025</time></li>
+          <li><b>WSET Level 3</b><span>WSET</span><time>Sep 2023</time></li>
+          <li><b>Adobe Illustrator Certificate</b><span>赫綵設計學院</span><time>Jan 2023</time></li>
+          <li><b>Adobe Photoshop Certificate</b><span>赫綵設計學院</span><time>Jan 2023</time></li>
+          <li><b>Tour Guide Certificate in French language</b><span>中華民國考試院</span><time>Mar 2017</time></li>
+      </ul>
     </div>
   </section>
 
@@ -810,7 +837,7 @@ ORDER BY
     "Wine Tasting Notes Explorer": ["From notes to|a live data product", "", "nodes", "img/badge/wine.jpg", "sq"],
     "AI Job-Search Workspace": ["AI workflow|automation", "", "flow"],
     "This Portfolio Website": ["AI-assisted web|design & build", "", "nodes", "img/badge/portfolio.jpg", "sq"],
-    "AI Daily Briefing": ["Automated AI|news monitoring", "", "pages"],
+    "AI Daily Briefing": ["Automated AI|news monitoring", "", "pages", "img/badge/briefing.jpg", "sq"],
     "30+ Wine Flyers": ["Print & promotional|design", "", "stack", "img/badge/flyers.jpg", "sq"]
   };
   var PAL = { ai: ["#0f5f63", "#0b1a24", "#9ff0e4"], data: ["#2b3a8f", "#121833", "#a9b2ff"], marketing: ["#5b2c78", "#1c1230", "#e0c2ff"], design: ["#7a3b22", "#241510", "#ffcfb0"] };
@@ -854,24 +881,38 @@ ORDER BY
       lines.map(function (l, k) { return '<tspan x="44" y="' + (y0 + k * 48) + '">' + esc(l) + '</tspan>'; }).join("") + '</text>' +
       '<rect x="46" y="' + (y0 + lines.length * 48 - 18) + '" width="56" height="5" rx="2.5" fill="' + c + '"/>';
   }
+  /* Tool logos on the cover, bottom-left: Claude where the project used Claude, Meta Muse where it used Muse. */
+  var LOGOS = {
+    "AI Daily Briefing": ["img/badge/muse-logo.svg"],
+    "Wine Tasting Notes Explorer": ["img/badge/muse-logo.svg"],
+    "AI Job-Search Workspace": ["img/badge/claude-logo.svg"],
+    "This Portfolio Website": ["img/badge/claude-logo.svg"]
+  };
+  function logoChips(t) {
+    var l = LOGOS[t] || [];
+    return l.map(function (src, k) {
+      var x = 44 + k * 84;
+      return '<rect x="' + x + '" y="296" width="72" height="72" rx="18" fill="#ffffff" opacity=".96"/>' +
+        '<image href="' + src + '" x="' + (x + 12) + '" y="308" width="48" height="48" preserveAspectRatio="xMidYMid meet"/>';
+    }).join("");
+  }
   function coverSVG(p, idx) {
     var cv = COV[p.t] || [p.tags[0], "", "bars"], pal = PAL[p.c];
     return '<svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + esc(cv[0].replace("|", " ")) + '">' +
       '<defs><linearGradient id="g' + idx + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + pal[0] + '"/><stop offset="1" stop-color="' + pal[1] + '"/></linearGradient></defs>' +
       '<rect width="800" height="400" fill="url(#g' + idx + ')"/>' + (cv[3] ? '<g opacity=".25">' + motif(cv[2], pal[2], idx + 3) + '</g>' + badge(cv[3], cv[4], idx, pal[2]) : motif(cv[2], pal[2], idx + 3)) +
-      headline(cv[0], pal[2]) + '</svg>';
+      headline(cv[0], pal[2]) + logoChips(p.t) + '</svg>';
   }
   var aiProjects = [
+    { c: "ai", t: "AI Daily Briefing", d: "An automated AI news briefing I built with Meta Muse. I set the crawl rules, the source list and the layout; Muse built the site. Every morning at 09:00 it scans 41 sources, writes the briefing and sends the day's headlines to my phone.", tags: ["Meta Muse (AI agent)", "Automation", "GitHub Pages"], img: "", alt: "",
+      l: "https://yichieh-web.github.io/ai-daily-briefing/ai-daily-briefing-static.html", lt: "Open the briefing",
+      text: "<h4>What I defined</h4><ul><li>The crawl rules</li><li>The source list: 41 fixed sources</li><li>Dual-source checks on publication dates</li><li>The layout style: a warm paper look</li></ul><h4>What runs automatically</h4><ul><li>Every morning at 09:00, it scans the sources and writes the briefing</li><li>Muse sends a notification with the day's headlines to my phone</li><li>The briefing is also published to GitHub Pages</li></ul>" },
     { c: "ai", t: "Wine Tasting Notes Explorer", d: "My wine tasting notes, kept for years in Apple Notes, turned into a searchable website with Meta Muse, an AI agent. 986 wines tasted from 2019 to 2026, each with my tasting note, the occasion and a Wine-Searcher average price.", tags: ["Meta Muse (AI agent)", "Data structuring", "GitHub Pages"], img: "img/wine-1.jpg", alt: "Wine tasting notes website: search by wine, place and people, and region; 986 wines", l: "https://yichieh-web.github.io/my-wine-tasting-notes-2019-2026/", lt: "Open the site",
-      text: "<h4>Before: a plain Apple Note</h4><p>One long note per year, each wine written as free text: a name typed quickly (often misspelled), then a line of tasting impressions. No structure, no search, no prices.</p><h4>After: a searchable wine database</h4><p>Example: the note line <em>2013 pommard rugiens les rugiens bas 2013</em> became <em>Henri Boillot Pommard 1er Cru Les Rugiens-Bas 2013</em>, numbered 2026 #1, with its tasting note and a Wine-Searcher average price of US$88.</p><h4>What the AI build did</h4><ul><li>Took unstructured notes from Apple Notes and structured them into one record per wine: year and number, wine name, tasting note, occasion and people</li><li>Built a website with three searches: wine name, place and people, and region</li><li>Added the Wine-Searcher international average price for each wine where available</li><li>Published it as a live site on GitHub Pages for personal use</li></ul>" }
-,
+      text: "<h4>Before: a plain Apple Note</h4><p>One long note per year, each wine written as free text: a name typed quickly (often misspelled), then a line of tasting impressions. No structure, no search, no prices.</p><h4>After: a searchable wine database</h4><p>Example: the note line <em>2013 pommard rugiens les rugiens bas 2013</em> became <em>Henri Boillot Pommard 1er Cru Les Rugiens-Bas 2013</em>, numbered 2026 #1, with its tasting note and a Wine-Searcher average price of US$88.</p><h4>What the AI build did</h4><ul><li>Took unstructured notes from Apple Notes and structured them into one record per wine: year and number, wine name, tasting note, occasion and people</li><li>Built a website with three searches: wine name, place and people, and region</li><li>Added the Wine-Searcher international average price for each wine where available</li><li>Published it as a live site on GitHub Pages for personal use</li></ul>" },
     { c: "ai", t: "AI Job-Search Workspace", d: "An AI workflow in Claude Code that supports my job search: it finds and filters postings, scores each one against my profile, and checks every fact against one verified record of my experience.", tags: ["Claude Code", "Python", "Automation"], img: "", alt: "",
       text: "<h4>What it does</h4><ul><li><b>Find:</b> job-board scrapers (LinkedIn and others), plus a portal I added for APEC, the French executive job board</li><li><b>Filter:</b> removes duplicates across runs and ranks new postings into a shortlist</li><li><b>Evaluate:</b> scores each posting against my profile on skills, experience and work-authorisation eligibility</li><li><b>Check:</b> every fact in an application is verified against one candidate profile (single source of truth), with an ATS keyword scan</li><li><b>Prepare:</b> interview talking points for each role</li></ul><p>Built on the open-source ai-job-search framework for Claude Code, then set up and customised for my profile and markets.</p>" },
     { c: "ai", t: "This Portfolio Website", d: "Rebuilt from my Notion portfolio with Claude Code: every project page read through the Notion connector, 19 PDFs converted page by page, and each cover generated from the project's own visuals.", tags: ["Claude Code", "UI UX Pro Max", "Impeccable", "Notion"], img: "", alt: "",
-      text: "<h4>How it was built</h4><ul><li>Content pulled straight from 21 Notion project pages, so every text, screenshot and PDF is on the site</li><li>About 400 PDF pages converted to images and grouped under each project</li><li>Colour palette and type chosen with the UI UX Pro Max design skill; layout polished with Impeccable's design rules</li><li>One cover template written in code, then filled with a real crop from each project: dashboards, maps, logos</li><li>Iterated in conversation, section by section, from my own feedback</li></ul>" },
-    { c: "ai", t: "AI Daily Briefing", d: "An automated AI news briefing I built with Meta Muse. I set the crawl rules, the source list and the layout; Muse built the site. Every morning at 09:00 it scans 41 sources, writes the briefing and sends the day's headlines to my phone.", tags: ["Meta Muse (AI agent)", "Automation", "GitHub Pages"], img: "", alt: "",
-      l: "https://yichieh-web.github.io/ai-daily-briefing/ai-daily-briefing-static.html", lt: "Open the briefing",
-      text: "<h4>What I defined</h4><ul><li>The crawl rules</li><li>The source list: 41 fixed sources</li><li>Dual-source checks on publication dates</li><li>The layout style: a warm paper look</li></ul><h4>What runs automatically</h4><ul><li>Every morning at 09:00, it scans the sources and writes the briefing</li><li>Muse sends a notification with the day's headlines to my phone</li><li>The briefing is also published to GitHub Pages</li></ul>" }
+      text: "<h4>How it was built</h4><ul><li>Content pulled straight from 21 Notion project pages, so every text, screenshot and PDF is on the site</li><li>About 400 PDF pages converted to images and grouped under each project</li><li>Colour palette and type chosen with the UI UX Pro Max design skill; layout polished with Impeccable's design rules</li><li>One cover template written in code, then filled with a real crop from each project: dashboards, maps, logos</li><li>Iterated in conversation, section by section, from my own feedback</li></ul>" }
   ];
   var SRC = { work: "Work", freelance: "Freelance", academic: "Academic project", personal: "Personal" };
   var SRC_OF = {
