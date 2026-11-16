@@ -228,7 +228,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
     <a class="logo" href="#top"><span>YL</span><span>Yi-Chieh LEE</span></a>
     <nav class="links" aria-label="Sections">
       <a href="#featured">Hands-on cases</a>
-      <a href="#applied-ai">AI in practice</a>
+      <a href="#applied-ai">Applied AI</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -378,7 +378,7 @@ footer { color: var(--ink-2); font-size: 14px; padding-block: 28px 40px; text-al
   <section class="sec" id="applied-ai">
     <div class="wrap">
       <div class="sec-head">
-        <h2>AI in practice</h2>
+        <h2>Applied AI</h2>
         <p>AI tools I built and use in real life.</p>
       </div>
       <div class="grid" id="ai-grid"></div>
@@ -914,7 +914,7 @@ ORDER BY
     { c: "ai", t: "This Portfolio Website", d: "Rebuilt from my Notion portfolio with Claude Code: every project page read through the Notion connector, 19 PDFs converted page by page, and each cover generated from the project's own visuals.", tags: ["Claude Code", "UI UX Pro Max", "Impeccable", "Notion"], img: "", alt: "",
       text: "<h4>How it was built</h4><ul><li>Content pulled straight from 21 Notion project pages, so every text, screenshot and PDF is on the site</li><li>About 400 PDF pages converted to images and grouped under each project</li><li>Colour palette and type chosen with the UI UX Pro Max design skill; layout polished with Impeccable's design rules</li><li>One cover template written in code, then filled with a real crop from each project: dashboards, maps, logos</li><li>Iterated in conversation, section by section, from my own feedback</li></ul>" }
   ];
-  var SRC = { work: "Work", freelance: "Freelance", academic: "Academic project", personal: "Personal" };
+  var SRC = { work: "Work", freelance: "Freelance", academic: "Academic project", personal: "AI in Practice - Personal Project" };
   var SRC_OF = {
     "30+ Wine Flyers": "work",
     "Power BI Sales Report": "academic", "Retail Sales Analysis (DataCamp)": "academic",
@@ -927,7 +927,7 @@ ORDER BY
     "Thesis: Analyzing and Predicting CRM Campaign Effectiveness": "academic",
     "Wine Tasting Notes Explorer": "personal", "AI Job-Search Workspace": "personal", "This Portfolio Website": "personal", "AI Daily Briefing": "personal"
   };
-  var label = { data: "Data", marketing: "Marketing", design: "Design", ai: "AI in practice" };
+  var label = { data: "Data", marketing: "Marketing", design: "Design", ai: "Applied AI" };
   function esc(s) { return s.replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
   var sqlCode = document.getElementById("sql-code").textContent;
   var grid = document.getElementById("grid");
